@@ -1,381 +1,2125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="林致宇 博士 (Dr. Chih-Yu Lin) - 國立臺灣海洋大學 資訊工程學系 副教授 | 智慧網路實驗室 (SNLab) 主持人。研究專長：車聯網、分散式人工智慧、聯邦式學習、網路流量分類。">
+    <meta name="keywords" content="林致宇, Chih-Yu Lin, 海洋大學, NTOU, 資訊工程, 智慧網路實驗室, SNLab, 車聯網, 聯邦學習, 流量分類">
+    <meta name="author" content="Chih-Yu Lin">
+    <title>Chih-Yu Lin (林致宇) - National Taiwan Ocean University</title>
 
-<html><head>
-    
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<title>Chih-Yu Lin's Homepage</title>
-<style = type="text/css">
-body {
-	margin-left:2em;
-	margin-right:2em;
-}
-#photo_txtarea {
-	font-style: italic;
-	font-family:"Times New Roman";
-}
-#perfonal_info {
-	font-style: italic;
-	font-family:"Times New Roman";
-}
-.title {
-	font-size: 20px;
-    font-style: italic;
-    width: 120px;
-    text-decoration: underline;
-    font-weight: bold;
-}
-.title_show {
-	font-weight: normal;
-}
-.title_below {
-	font-size: 23px;
-    font-style: italic;
-    font-weight: bold;
-}
-</style>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="./index.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --primary-glow: rgba(37, 99, 235, 0.15);
+            --accent: #0284c7;
+            --accent-purple: #7c3aed;
+            --dark: #0f172a;
+            --dark-surface: #1e293b;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #ffffff;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 30px -5px rgba(37, 99, 235, 0.12), 0 8px 10px -6px rgba(0,0,0,0.04);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* 頂部導覽列 Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-brand-badge {
+            font-size: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 3px 8px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.88rem;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        }
+
+        /* 手機版選單切換按鈕 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--dark);
+            border-radius: var(--radius-sm);
+        }
+
+        /* 頁面主要容器 */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 104px 24px 60px;
+        }
+
+        /* Hero 區塊 */
+        .hero-section {
+            background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 48px 40px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-avatar-wrapper {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-status-pill {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #059669;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #d1fae5;
+            box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero-titles {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-name {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        .hero-name-en {
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .hero-role-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-affiliation {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-affiliation strong {
+            color: var(--dark);
+        }
+
+        .hero-bio {
+            color: #475569;
+            font-size: 0.98rem;
+            line-height: 1.75;
+        }
+
+        .ai-disclaimer-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius-sm);
+            padding: 7px 14px;
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.5;
+            width: fit-content;
+        }
+
+        .ai-disclaimer-note i {
+            color: #6366f1;
+            flex-shrink: 0;
+        }
+
+        .hero-contact-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.86rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: var(--primary-light);
+            transform: translateY(-1px);
+        }
+
+        .contact-chip i {
+            color: var(--primary);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* 快速統計 / 亮點 Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .stat-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .stat-info h4 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.1;
+        }
+
+        .stat-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+            font-weight: 500;
+        }
+
+        /* 通用章節樣式 Section */
+        .section-block {
+            margin-bottom: 54px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 64px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* 實驗室宣傳卡片 Highlight Lab Banner */
+        .lab-banner-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 50px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lab-banner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 40%;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.25), transparent 70%);
+            pointer-events: none;
+        }
+
+        .lab-banner-content h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lab-banner-content p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .lab-topics-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .lab-topic-tag {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+
+        .btn-lab-cta {
+            background: #ffffff;
+            color: #0f172a !important;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .btn-lab-cta:hover {
+            transform: translateY(-2px);
+            background: #f8fafc;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: var(--primary) !important;
+        }
+
+        /* 雙欄格狀佈局 (學歷 + 經歷) */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 48px;
+        }
+
+        /* 時間軸 Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg-page);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 0 3px var(--bg-page);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-card h4 {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .timeline-card .institution {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .timeline-card .details {
+            font-size: 0.84rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .timeline-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .timeline-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* 經歷清單 Experience List */
+        .experience-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .experience-card-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .experience-card-list::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .exp-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .exp-item:hover {
+            border-color: rgba(37, 99, 235, 0.3);
+            background-color: var(--primary-light);
+        }
+
+        .exp-badge {
+            background: #e2e8f0;
+            color: #334155;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .exp-current {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .exp-text {
+            font-size: 0.88rem;
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        /* 專題報導 / Interview Card */
+        .interview-banner {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .interview-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .interview-tag {
+            background: #2563eb;
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .interview-link {
+            color: #1e3a8a;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.92rem;
+        }
+
+        .interview-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 著作分類過濾器 Publication Filter Tabs */
+        .pub-filter-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .pub-tab-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pub-tab-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .pub-tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        }
+
+        .pub-tab-count {
+            font-size: 0.75rem;
+            background: rgba(0,0,0,0.06);
+            padding: 1px 7px;
+            border-radius: var(--radius-full);
+        }
+
+        .pub-tab-btn.active .pub-tab-count {
+            background: rgba(255,255,255,0.25);
+            color: white;
+        }
+
+        /* 著作項目清單 Publication Items */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pub-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+
+        .pub-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(37, 99, 235, 0.35);
+        }
+
+        .pub-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .pub-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pub-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .pub-badge-sci {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .pub-badge-ei {
+            background: #e0e7ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        .pub-badge-conf {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pub-badge-patent {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+        }
+
+
+
+        .pub-year {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .pub-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.45;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .pub-authors b, .pub-authors strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .pub-venue {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .pub-links {
+            margin-top: 4px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .pub-link-btn {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pub-link-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* 專利與榮譽 Cards Grid */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 18px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .info-card-header i {
+            color: var(--primary);
+        }
+
+        .info-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .info-card p {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* 檔案下載專區 Download Cards */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .download-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .download-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            background: var(--primary-light);
+        }
+
+        .download-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            background: #dbeafe;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .download-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .download-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* 頁尾 Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 48px 24px 36px;
+            margin-top: 60px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .footer-brand {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.84rem;
+        }
+
+        .back-to-top-btn {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .back-to-top-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* 響應式佈局 RWD */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 28px;
+            }
+
+            .hero-avatar-wrapper {
+                margin: 0 auto;
+            }
+
+            .hero-titles, .hero-affiliation, .hero-contact-chips, .hero-actions {
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lab-banner-card {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .lab-topics-pills {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-container {
+                padding-top: 88px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .hero-section {
+                padding: 32px 20px;
+            }
+
+            .hero-name {
+                font-size: 1.85rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top, .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div><center>
-<table border="1">
-	<tbody><tr>
-		<td><img src="chihyu2012.jpg" height="200"></td>
-		<td id="photo_txtarea" width="390px"><center><h1>Chih-Yu Lin</h1></center></td>
-	</tr>
-</tbody></table>
-</center></div>
+    <!-- 頂部浮動導覽列 Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <span>Chih-Yu Lin</span>
+                <span class="nav-brand-badge">NTOU CSE</span>
+            </a>
 
-<!-- 程式筆記 -->
-<!--<p/>
-<center><h3><b>Teaching Materials/Notes for Programming</b></h3></center>
-<center>
-<div>[<a href="./Android/android.html">Android Programming</a>]</div>
-<div>[<a href="./Swift/index.html">Swift Programming</a>]</div>
-<div>[Objective C Programming]</div>
-<div>[Linux Kernel]</div>
-<div>[Web Applications and Programming]</div>
-</center>
-<p/>
-<p/><hr/>-->
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
 
-<!-- 個人資訊 -->
-<p/>
-<center><h3><b>Personal Information</b></h3>
-<table id="perfonal_info">
-<tbody><tr><td>
-<ul type="circle" style="font-size:18px">
-	<li><i>Name:<b> Chih-Yu Lin</b></i></li>
-	<li><i>Birthplace: <b>Hualien, Taiwan</b></i></li>
-	<li><i>E-mail:<b> lincyu (at) mail (dot) ntou (dot) edu (dot) tw</b></i></li>
-</ul>
-</td></tr>
-</tbody></table>
-</center>
-<p/>
-<p/><hr/>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link">關於</a></li>
+                <li><a href="#lab-highlight" class="nav-link">研究實驗室</a></li>
+                <li><a href="#education-experience" class="nav-link">學經歷</a></li>
+                <li><a href="#publications" class="nav-link">著作列表</a></li>
+                <li><a href="#patents" class="nav-link">專利</a></li>
+                <li><a href="#downloads" class="nav-link">資源下載</a></li>
+                <li><a href="lab.html" class="nav-cta"><i data-lucide="cpu" style="width:16px;height:16px;"></i> 智慧網路實驗室</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!--
-<p/>
-<center><h3><b>Resume</b></h3><p></p>
-You can hide some information here.
-<table border="1">
-<tbody>
-<tr>
-	<td class="title"><span id="education">Education</span></td>
-	<td class="title"><span id="experience">Experiences</span></td>
-	<td class="title"><span id="biography">Biography</span></td>
-</tr>
-<tr>
-	<td class="title"><span id="publication">Publication</span></td>
-	<td class="title"><span id="aa">Academic Activities</span></td>
-    <td class="title"><span id="talk">Invited Talks</span></td>
-</tr>
-<tr>
-	<td class="title"><span id="award">Awards</span></td>
-	<td class="title"><span id="certificate">Certificates</span></td>
-	<td class="title"><span id="project">Projects</span></td>
-	<td><span id="empty">　</span></td>
-</tr>
-</tbody></table><p>
-</p></center>
--->
+    <!-- 主要內容區塊 -->
+    <main class="page-container">
 
-<!-- 學歷 -->
-<div id="education_list">
-<span class="title_below">Education</span>
-<ul type="circle">
-   <li><i><b>PHD, National Chiao Tung University (Taiwan), Department of Computer Science (Sep. 2003 ~ Sep. 2007)</b></i><br>
-   Dissertation: <a href="./PhD_Thesis.pdf">Communication Protocols for Location Management in Object Tracking Sensor Networks</a><br>
-   Advisor: Prof. Yu-Chee Tseng and Prof. Wen-Chih Peng</li><p>
-   </p><li><i><b>Visiting Student, Ohio State University (USA), Department of Computer Science and Engineering (Sep. 2006 ~ Dec. 2006)</b></i></li><p>
-   </p><li><i><b>MS, National Central University (Taiwan), Department of Computer Science and Information Engineering (Sep. 1998 ~ June 2000)</b></i><br>
-   Thesis: <a href="./Master_Thesis.pdf">A Multi-Channel MAC Protocol with On-Demand Channel Assignment for Mobile Ad Hoc Networks</a><br>
-   Advisor: Prof. Jang-Ping Sheu and Prof. Yu-Chee Tseng</li><p>
-   </p><li><i><b>BS, National Central University (Taiwan), Department of Computer Science and Information Engineering (Sep. 1993 ~ June 1998)</b></i><br>
-   Project: A Proxy Server for Wireless Networks<br>
-   Advisor: Prof. Jang-Ping Sheu and Prof. Yu-Chee Tseng</li>
-</ul>
-</div>
+        <!-- Hero 區塊 -->
+        <section class="hero-section" id="hero">
+            <div class="hero-grid">
+                <div class="hero-avatar-wrapper">
+                    <img src="chihyu2012.jpg" alt="Chih-Yu Lin" class="hero-avatar">
+                    <div class="hero-status-pill">
+                        <span class="status-dot"></span>
+                        <span>Associate Professor</span>
+                    </div>
+                </div>
 
-<div id="experience_list">
-<span class="title_below">Interview</span>
-<ul type="circle">
-    <li>INSIDE: <a href="https://www.inside.com.tw/article/17554-google-play-developer-lincyu">幫女友排班到百萬下載《班表小幫手》開發者如何打造細水長流型 App</a></li>
-</ul>
-</div>
+                <div class="hero-content">
+                    <div class="hero-titles">
+                        <h1 class="hero-name">林致宇 <span class="hero-name-en">Chih-Yu Lin</span></h1>
+                        <span class="hero-role-badge"><i data-lucide="award" style="width:14px;height:14px;"></i> 博士 / 副教授</span>
+                    </div>
 
-<!-- 經歷 -->
-<div id="experience_list">
-<span class="title_below">Experiences (Partial)</span>
-<ul type="circle">
+                    <div class="hero-affiliation">
+                        <i data-lucide="map-pin" style="width:18px;height:18px;color:var(--primary);"></i>
+                        <span>國立臺灣海洋大學 資訊工程學系 <strong>(NTOU CSE)</strong></span>
+                    </div>
 
-    <li>2020/02 ~ present  Assistant Professor at Dept. of Computer Science and Engineering, National Taiwan Ocean University</li>
-    <li>2008/02 ~ 2011/07  Assistant Professor at Dept. of Applied Informatics and Multimedia, Asia University</li>    
-    <!-- <li>2015/11 ~ present  藝派科技技術長</li>-->
-    <li>2018/09 ~ 2019/01 國立交通大學資訊工程學系『Android程式設計 (使用 Kotlin)』</li>
-    <li>2017/02 ~ 2017/06 台北市立大學資訊科學系『Swift程式語言與iOS專案設計』</li>
-    <li>2016/05 交通大學電子系人才培訓中心『行動裝置應用開發』講師</li>
-    <li>2015/10 ~ 2015/10  扎根高中資訊教育課程講師</li>
-    <li>2015/06 ~ 2015/06  『Android應用程式開發實務』講師 (凌陽科技)</li>
-    <li>2015/05 ~ 2015/05  『App 開發入門』講師 (精英電腦)</li>
-    <li>2015/03 ~ 2015/10  茂為歐買尬數位科技技術顧問</li>
-    <li>2014/07 ~ 2015/02  有無科技技術長</li>
-    <li>2014/05 ~ 2014/05  國立交通大學資訊軟體技術人才培訓講師（課程名稱：開發Android行動裝置(手機、面板)應用軟體之策略與實作）</li>
-    <li>2014/02 ~ 2014/06  國立交通大學資訊工程學系兼任助理教授（課程名稱：雲端行動感測應用）</li>
-    <li>2013/03 ~ 2013/05  銘傳大學 Android 手機應用程式設計訓練班講師</li>
-    <li>2013/02 ~ 2014/06  國立交通大學資訊工程學系兼任助理教授（課程名稱：雲端行動感測應用）</li>
-	<li>2012/09 ~ 2012/10  國立交通大學資訊軟體技術人才培訓講師（課程名稱：開發Android行動裝置(手機、面板)應用軟體之策略與實作）</li>
-	<li>2012/09 ~ 2012/11  台北市立教育大學資訊科學系兼任助理教授（課程名稱：高等程式設計）</li>	<li>2012/02 ~ 2012/06  台北市立教育大學資訊科學系兼任助理教授（課程名稱：Java Programming (II)）</li>
-	<li>2012/02 ~ 2012/06  國立交通大學資訊工程學系兼任助理教授（課程名稱：手機應用軟體開發與創意專題）</li>
-	<li>2011/09 ~ 2011/10  國立交通大學資訊軟體技術人才培訓講師（課程名稱：Android 手機應用軟體開發與實作）</li>
-	<li>2009/07 ~ 2009/09  Visiting Scholar at Institute of Information Science, Academia Sinica</li>
-	<li>2010/06 ~ 2010/07  國立交通大學資訊軟體技術人才培訓講師（課程名稱：手機應用軟體開發與實作）</li>
-	<li>2010/02 ~ 2010/06  國立交通大學資訊工程學系兼任助理教授（課程名稱：Android Programming）</li>
-	<li>2007/09 ~ 2008/01  Part-time Engineer at Realtek-NCTU Joint Research Center</li>
-	<li>2006/09 ~ 2006/12  Visiting Student, Ohio State University</li>
-</ul>
-</div>
+                    <p class="hero-bio">
+                        國立交通大學資訊工程博士。主要研究領域涵蓋<strong>車聯網與協同感知 (V2X)</strong>、<strong>分散式人工智慧與聯邦學習 (Federated Learning)</strong>、<strong>高精準網路流量分類</strong>、軟體定義網路 (SDN) 以及物聯網邊緣運算。主持<strong>智慧網路實驗室 (SNLab)</strong>。
+                    </p>
 
-<!-- 自傳 -->
-<div id="biography_body">
-<div class="title_below">Biography</div><p>
-Chih-Yu Lin received his B.S. and M.S. degrees in Computer Science from the National Central University in 1998 and 2000, respectively. 
-He obtained his Ph.D. in Computer Science from the National Chiao-Tung University in September 2007. His research interests include mobile digital content, wireless networks, distributed computing, and artificial intelligence.
-</p></div>
+                    <div class="ai-disclaimer-note">
+                        <i data-lucide="sparkles" style="width:15px;height:15px;"></i>
+                        <span>註：本網頁內容由 AI 輔助彙整生成，雖已盡力校對核實，仍可能存在疏漏，敬請見諒。</span>
+                    </div>
 
-<!-- 著作列表 -->
-<div id="publication_list">
-<div class="title_below">Publication List</div>
-<h3><i>Journal</i></h3>
-<ol>
-<li><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang, "A Traffic Classification-based Traffic Engineering Framework in Software-Defined Networking," International Journal of Communication Networks and Distributed Systems, vol. 32, no. 1, pp. 33–57, 2026. [Online]. Available: <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJCNDS.2026.150916">https://www.inderscienceonline.com/doi/abs/10.1504/IJCNDS.2026.150916</a> (ESCI, EI)</li>
-<li>Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b>, "A Distributed Beam Hopping Strategy with Load Balancing and Coordinated Interference Avoidance for Heterogeneous Satellite Systems," IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025, DOI:10.1109/TAES.2025.3633205 (SCI)</li>
-<li>Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh, "Fake Path Co-Construction Source Location Privacy Protection Scheme Design for UWSNs," IEEE Transactions on Information Forensics and Security, vol. 20, pp. 9139-9150, 2025, DOI:10.1109/TIFS.2025.3597212 (SCI)</li>
-<li><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An, "Employing Federated Semi-Supervised Learning for Network Traffic Classification," Journal of Network and Systems Management, vol.33, no. 53, pp. 1-30, May 2025. (SCI)</li>
-<li>Y.-Heng Hsieh, C.-M. Chao, C.-C. Yeh, and <b>C.-Y. Lin</b>, "Anti-Jamming Low-Latency Channel Hopping Protocol for Cognitive Radio Networks," Electronics, 12(8):1811, 2023, https://doi.org/10.3390/electronics12081811 (SCI)</li>
-<li>Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b>, "WFID: Driver Identity Recognition Based on Wi-Fi Signals," in IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan. 2023, doi: 10.1109/TVT.2022.3203725. (SCI)</li>
-<li>K.-W. Chen, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh, "Anti-Jamming Channel Hopping Protocol Design Based on Channel Occupancy Probability for Cognitive Radio Networks," Computer Networks, Vol. 214, Sep. 2022. (SCI)</li>
-<li>W.-C. Liang, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh, "Transmission Range Determination and Antenna Deployment to Recognize Fitness Actions Using Wi-Fi Signals," International Journal of Ad Hoc and Ubiquitous Computing, Vol. 41, Issue 4, Oct. 2022 (SCI)</li>
-<li><b>C.-Y. Lin</b>, C.-H. Wang, and Y.-C. Tseng, "A TDMA Protocol with Reinforcement Learning Slot Selection for MANETs," International Journal of Ad Hoc and Ubiquitous Computing, 2021 Vol.37 No.1, pp.16 - 25. [<a href="http://www.inderscience.com/offer.php?id=115123">Website</a>]</li>
-<li><b>C.-Y. Lin</b>, Y.-C. Tseng, and Ten-Hwang Lai, "Exploiting Spatial Correlation at the Link Layer for Event-driven Sensor Networks," Int'l Journal of Sensor Networks, Vol. 12, No. 1, July 2012, 1-15.</li>
-<li>W.-C. Shih, S.-S. Tseng, C.-C. Yang, <b>C.-Y. Lin</b> and T. Liang (in press), "A Folksonomy-based Guidance Mechanism for Context-aware Ubiquitous Learning: a Case Study of Chinese Scenic Poetry Appreciation Activities," Educational Technology &amp; Society, Vol. 15, No. 1, 2012, pp. 90-101. (SSCI)</li>
-<li><b>C.-Y. Lin</b>, Y.-C. Tseng, and Yung-Chih Liu, "Imprecision-tolerant Location Management for Object-tracking Wireless Sensor Networks," The Computer Journal, Vol. 53, No. 3, 2010, pp. 351-364. (SCIE, EI)</li>
-<li><b>C.-Y. Lin</b>, Y.-C. Tseng, Ten-Hwang Lai, W.-C. Peng and H.-W. Fang, "Message-efficient In-network Location Management in a Multi-sink Wireless Sensor Network," Int'l Journal of Sensor Networks, Vol. 3, No. 1, 2008, pp. 3-15.</li>
-<li><b>C.-Y. Lin</b>, W.-C. Peng, and Y.-C. Tseng, "Efficient In-Network Moving Object Tracking in Wireless Sensor Networks," IEEE Trans. on Mobile Computing, Vol. 5, No. 8, Aug. 2006, pp. 1044-1056. (SCI)</li>
-<li>S.-L. Wu, <b>C.-Y. Lin</b>, Y.-C. Tseng, and J.-P. Sheu, "A Novel MAC Protocol with On-Demand Channel Assignment for Multi-Hop Mobile Ad-Hoc Networks," Int'l J. of Electrical Engineering, Vol. 11, No. 4, Nov. 2004, pp. 361-374. (EI)</li>
-<li>S.-L. Wu, Y.-C. Tseng, <b>C.-Y. Lin</b>, and J.-P. Sheu, "A Multi-Channel MAC Protocol with Power Control for Multi-Hop Mobile Ad Hoc Networks," The Computer Journal, Vol. 45, No. 1, 2002, pp. 101-110. (SCIE, EI)</li>
-</ol>
+                    <div class="hero-contact-chips">
+                        <a href="mailto:lincyu@mail.ntou.edu.tw" class="contact-chip">
+                            <i data-lucide="mail" style="width:15px;height:15px;"></i>
+                            <span>lincyu (at) mail (dot) ntou (dot) edu (dot) tw</span>
+                        </a>
+                    </div>
 
-<h3><i>Conference</i></h3>
-<ol>
-<li><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu, "A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation," 2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025, pp. 1-5, doi: 10.1109/APWCS67981.2025.11151960.</li>
-<li>Liyakat Ali, and <b>Chih-Yu Lin</b>, "Implementing Federated Learning via IoTtalk: A Smart Home Case Study," 2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025, pp. 1-5, doi: 10.1109/APWCS67981.2025.11151953.</li>
-<li>蔡震霖、<b>林致宇</b>, "聯邦學習架構下聚合演算法於流量分類應用中的影響," 第二十九屆行動計算研討會(MC 2025)，台灣，台北，2025年8月.</li>
-<li>廖翊均、安立郁、<b>林致宇</b>, "樣本數及取樣方法的對於網路流量分類效能的影響," 第二十九屆行動計算研討會(MC 2025)，台灣，台北，2025年8月.</li>
-<li>Wei-Rong Chen, <b>Chih-Yu Lin</b>, and Yu-Chee Tseng, "Label Expansion through Walking Trajectories for Wi-Fi CSI-Based Indoor Localization," IEEE International Symposium on Personal, Indoor and Mobile Radio Communication (PIMRC), Valencia, Spain, Sep. 2024.</li>
-<li>劉仲恒、<b>林致宇</b>, "FedMDFNN模型之改進及效能分析," 無線、隨意及感測網路研討會(WASN 2024)，台灣，台北，2024年8月.</li>
-<li>安立郁、<b>林致宇</b>, "資料不平衡對網路流量分類的影響," 第二十八屆行動計算研討會(MC 2024)，台灣，台北，2024年8月.</li>
-<li>Albert Budi Christian, Yi-Qi Zhong, Wan-Hsun Hu, Chia-Hsuan Yu, and <b>Chih-Yu Lin</b>, "A Simple Deep Q-Network based Feature Selection Method," In VTS Asia Pacific Wireless Communications Symposium, APWCS 2023, Tainan city, Taiwan, August 23-25, 2023. pages 1-4, IEEE, 2023. <b>(presenter)</b></li>
-<li>江庭葳、曾千庭、<b>林致宇</b>, "使用 Autoencoder 和聯邦式學習進行網路流量分類," 第二十七屆行動計算研討會(MC 2023)，台灣，基隆，2023年8月.</li>
-<li>Guan-Sheng Wang, <b>Chih-Yu Lin</b>, Yu-Chee Tseng, and Lan-Da Van, "A Multilayer Perceptron Model for Station Grouping in IEEE 802.11ah Networks," IEEE/IFIP Network Operations and Management Symposium (NOMS), Miami, USA, May 2023. <b>(presenter)</b></li>
-<li>曾千庭、<b>林致宇</b>、程匯芳、林暐傑, "使用聯邦式學習進行網路流量分類," 臺灣網際網路研討會，台灣，桃園，2022年12月.</li>
-<li>梁晉維、<b>林致宇</b>, "實現車輛周遭環境感知的自動標記法," 臺灣網際網路研討會，台灣，桃園，2022年12月.</li>
-<li>Albert Budi Christian, <b>Chih-Yu Lin</b>, Yu-Chee Tseng, Lan-Da Van, Wan-Hsun Hu, and Chia-Hsuan Yu, "Accuracy-Time Efficient Hyperparameter Optimization Using Actor-Critic-based Reinforcement Learning and Early Stopping in OpenAI Gym Environment," International Conference on Internet of Things and Intelligence System (IoTaIS), Bali, Indonesia, Nov. 2022.</li>
-<li>Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng, "Radar and Camera Fusion for Object Forecasting in Driving Scenarios," International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Malaysia, Dec. 2022.</li>
-<li><b>林致宇</b>、黃弘毅, "軟體定義網路下基於流量類別概念的流量分類與排程方法," 臺灣網際網路研討會，台灣，台中，2021年12月.</li>
-<li>Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng, "Data Fusion Driven Lane-level Precision Data Transmission for V2X Road Applications," International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Singapore, Dec. 2021.</li>
-<li>Albert Budi Christian, <b>C.-Y. Lin</b>, C.-W. Lee, L.-D. Van, and Y.-C. Tseng, "A Neural Network-based Multisensor Data Fusion Approach for Enabling Situational Awareness of Vehicles," International Conference on Pervasive Artificial Intelligence (ICPAI), Taipei, Taiwan, Dec. 2020. </li>
-<li>李佩俞、林獻庭、何鳳雯、林家弘、林逸豪、<b>林致宇</b>、陳志成, "使用長短期記憶神經網路演算法結合蜂巢式網路資訊的移動類型辨識器," 臺灣網際網路研討會，台灣，高雄，2019年9月.</li>
-<li>林獻庭、何鳳雯、林家弘、李佩俞、林逸豪、<b>林致宇</b>、陳志成, "SensingGO: 結合社交與獎勵活動之群眾量測平台," 第十五屆無線、隨意及感測網路研討會，台灣，台南，2019年8月.</li>
-<li>T.-K. Lee, T.-W. Wang, W.-X. Wu, Y.-C. Kuo, S.-H. Huang, G.-S. Wang, <b>C.-Y. Lin</b>, J.-J. Chen, and Y.-C. Tseng, "Building a V2X Simulation Framework for Future Autonomous Driving," The 20th Asia-Pacific Network Operations and Management Symposium (APNOMS), Matsue, Japan, Sep. 2019.</li>
-<li>Y.-H. Lin, J.-C. Chen, <b>C.-Y. Lin</b>, B.-Y. Su, and P.-Y. Lee, "Transportation Type Identification by using Machine Learning Algorithms with Cellular Information," in Proc. of IEEE International Conference on Communications (ICC '19), Shanghai, China, May 2019.</li>
-<li>T.-K. Lee, Y.-C. Kuo, S.-H. Huang, G.-S. Wang, <b>C.-Y. Lin</b>, and Y.-C. Tseng, "Augmenting Car Surrounding Information by Inter-Vehicle Data Fusion," in Proc. of IEEE Wireless Communications and Networking Conference (WCNC), Marrakech, Morocco, April 2019.</li>
-<li>Y.-H. Lin, J.-C. Chen, <b>C.-Y. Lin</b>, B.-Y. Su, P.-Y. Lee, "Poster: SensingGO: toward mobile/cellular data measurement with social and rewarding activities," in Proc. of ACM International Conference on Mobile Computing and Networking (MobiCom '18), New Delhi, India, pp. 765 - 767, Oct. 2018.</li>
-<li>譚宇均、林元偉、<b>林致宇</b>、陳志成, "適地性社群媒體的設計與實作," 第二十一屆行動計算研討會，台灣，南投，2016年8月.</li>
-<li>C.-C. Wu, L.-P. Tung, <b>C.-Y. Lin</b>, B.-S. Lin, and Y.-C. Tseng, "On Local Cache Management Strategies for Mobile Augmented Reality", in Proc. of IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM), Sydney, Australia, June 2014.</li>
-<li><b>C.-Y. Lin</b>, S.-H. Lu, Y.-C.Tseng, "A Channel Management Protocol for Multi-Channel, Single-Radio 802.11-based Wireless Mesh Networks," IEEE International Workshop on Computer Aided Modeling Analysis and Design of Communication Links and Networks, Kyoto, Japan, June 2011.</li>
-<li><b>林致宇</b>、時文中, "位置感知旅遊翻譯機之設計與實作," 第六屆台灣數位學習發展研討會，台灣，台中，2010年10月.</li>
-<li><b>C.-Y. Lin</b>, "A Quadtree-based Location Management Scheme for Wireless Sensor Networks," IEEE/IFIP Network Operations and Management Symposium, Osaka, Japan, April 2010.</li>
-<li><b>C.-Y. Lin</b>, Y.-C. Tseng, H.-W. Fang, Y.-F. Kao, Y.-F. Lee, and C.-C. Shen, "Vague Location Tracking in Wireless Sensor Networks," Asia-Pacific Wireless Communications Symp. (APWCS), Sendai, Japan, Aug. 2008.</li>
-<li><b>C.-Y. Lin</b>, Y.-C. Tseng, and T.-H. Lai, "Message-Efficient In-Network Location Management in a Multi-sink Wireless Sensor Network," IEEE Int'l Conf. on Sensor Networks, Ubiquitous, and Trustworthy Computing (SUTC), Taichung, Taiwan, June 2006.</li>
-<li><b>C.-Y. Lin</b> and Y.-C. Tseng, "Structures for In-Network Moving Object Tracking in Wireless Sensor Networks," Broadband Wireless Networking Symp.(BroadNet), San Jose, California, USA, Oct. 2004.</li>
-<li>Y.-C. Tseng, S.-L. Wu, <b>C.-Y. Lin</b>, and J.-P. Sheu, "A Multi-Channel MAC Protocol with Power Control for Multi-Hop Mobile Ad Hoc Networks," Int'l Workshop on Wireless Networks and Mobile Computing, 2001 (in conjunction with ICDCS2001), Phoenix, Arizona, USA, April 2001, pp. 419-424. </li>
-<li>S.-L. Wu, <b>C.-Y. Lin</b>, Y.-C. Tseng, and J.-P. Sheu, "A New Multi-Channel MAC Protocol with On-Demand Channel Assignment for Mobile Ad Hoc Networks," Int'l Symp. on Parallel Architectures, Algorithms and Networks (I-SPAN), Dallas, Texas, USA, Dec. 2000, pp. 232-237. </li>    
-</ol>
+                    <div class="hero-actions">
+                        <a href="lab.html" class="btn btn-primary">
+                            <i data-lucide="network" style="width:18px;height:18px;"></i>
+                            <span>造訪智慧網路實驗室 (SNLab)</span>
+                        </a>
+                        <a href="#publications" class="btn btn-secondary">
+                            <i data-lucide="book-open" style="width:18px;height:18px;"></i>
+                            <span>查看學術著作目錄</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- 亮點統計 Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="file-check-2"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>15+</h4>
+                    <p>期刊論文 (SCI/EI)</p>
+                </div>
+            </div>
 
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="presentation"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>30+</h4>
+                    <p>國際與國內研討會論文</p>
+                </div>
+            </div>
 
-<h3><i>Book</i></h3>
-<!--<p><img border="0" src="./Book_Cover.jpg" width="200" height="280"></p>-->
-<ol>
-<li><b>林致宇</b>，"<a href="http://www.books.com.tw/products/0010678395">Android程式設計入門與應用(第二版)</a>"，全華出版 (2015, ISBN: 978-957-21-9833-9)</li>
-<li><b>林致宇</b>，"<a href="http://www.chwa.com.tw/NEWun/bookinfo.asp?b_no=06251007">Android程式設計入門與應用</a>"，全華出版 (2014, ISBN: 978-957-21-9412-6)</li>
-<li>曾煜棋、林政寬、<b>林致宇</b>、潘孟鉉，"無線網路：通訊協定、感測網路、射頻技術與應用服務"，碁峰出版 (2011, ISBN: 9789862763094)</li>
-<li>曾煜棋、潘孟鉉、<b>林致宇</b>，"無線區域及個人網路-隨意及感測網路之技術與應用"，知城出版 (2007, ISBN: 9868293316)</li>
-</ol>
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>8+</h4>
+                    <p>美/台/中發明專利</p>
+                </div>
+            </div>
 
-<h3><i>Book Chapters</i></h3>
-<ol>
-    <li>W.-H. Tam, <b>C.-Y. Lin</b>, and Y.-C. Tseng, "Wireless Mesh Networks: Design Principles," Wireless Ad Hoc Networking: Personal-Area, Local-Area, and Sensory-Area Networks, Edited by Shih-Lin Wu and Yu-Chee Tseng, Auerbach Publications, 2007, (ISBN-10: 0849392543, ISBN-13: 978-0849392542)</li>
-    <li><b>C.-Y. Lin</b>, W.-H. Tam, and Y.-C. Tseng, "Wireless Mesh Networks: Multi-Channel Protocols and Standard Activities," Wireless Ad Hoc Networking: Personal-Area, Local-Area, and Sensory-Area Networks, Edited by Shih-Lin Wu and Yu-Chee Tseng, Auerbach Publications, 2007, (ISBN-10: 0849392543, ISBN-13: 978-0849392542)</li>
-</ol>
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="users"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>SNLab</h4>
+                    <p>智慧網路實驗室主持人</p>
+                </div>
+            </div>
+        </section>
 
-<h3><i>Technical Reports</i></h3>
-<ol>
-    <li>S.-L. Wu, <b>C.-Y. Lin</b>, C.-J. Huang, Y.-C. Tseng, and J.-P. Sheu, "W4: A WWW Proxy Server for Wireless Networks," Cross-Straight Information Technology, 1999, Chung-Li, Taiwan. </li>
-</ol>
+        <!-- 專題訪談 Banner -->
+        <div class="interview-banner">
+            <div class="interview-content">
+                <span class="interview-tag">INSIDE 專題專訪</span>
+                <a href="https://www.inside.com.tw/article/17554-google-play-developer-lincyu" target="_blank" class="interview-link">
+                    幫女友排班到百萬下載《班表小幫手》開發者如何打造細水長流型 App <i data-lucide="external-link" style="width:14px;height:14px;display:inline-block;vertical-align:middle;"></i>
+                </a>
+            </div>
+            <a href="https://www.inside.com.tw/article/17554-google-play-developer-lincyu" target="_blank" class="btn btn-secondary" style="padding:6px 14px;font-size:0.82rem;">閱讀專訪</a>
+        </div>
 
-<h3><i>Patent</i></h3> 
+        <!-- 實驗室導覽 Lab Highlight Card -->
+        <section class="lab-banner-card" id="lab-highlight">
+            <div class="lab-banner-content">
+                <h3><i data-lucide="cpu"></i> 智慧網路實驗室 (Smart Networking Lab, SNLab)</h3>
+                <p>
+                    本實驗室由林致宇副教授主持，專注於前瞻通訊網路、邊緣運算與分散式人工智慧技術之研發。致力培育具備網路協定設計、機器學習應用與分散式系統開發能力的高階研發人才。
+                </p>
+                <div class="lab-topics-pills">
+                    <span class="lab-topic-tag"><i data-lucide="activity" style="width:12px;height:12px;display:inline-block;margin-right:4px;"></i> 1. 網路流量分類</span>
+                    <span class="lab-topic-tag"><i data-lucide="git-merge" style="width:12px;height:12px;display:inline-block;margin-right:4px;"></i> 2. 聯邦式學習</span>
+                    <span class="lab-topic-tag"><i data-lucide="navigation" style="width:12px;height:12px;display:inline-block;margin-right:4px;"></i> 3. 車聯網與協同感知</span>
+                </div>
+            </div>
+            <a href="lab.html" class="btn-lab-cta">
+                <span>進入實驗室專屬網頁</span>
+                <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+            </a>
+        </section>
 
-<ol>
-<li>曾煜棋，<b>林致宇</b>，林炳榕，"無線網路以及無線基地台頻道的動態配置方法與系統", No. I 258276, Taiwan (2006.7-2024.11, owned by III).</li>
-<li>Y.-C. Tseng, <b>C.-Y. Lin</b>, and B.-R. Lin, "Methods and Systems of Dynamic Channel Allocation for Access Points in Wireless Networks", US Patent, No. 7,376,099, (2008/5/20, owned by III).</li>
-<li><b>林致宇</b>，劉永之，莊哲熙，曾煜棋，"用於一感測網路之節點裝置、節點數量調整方法及其電腦程式產品", 201031143, Taiwan (2010/08/16, owned by III)</li>
-<li><b>C.-Y. Lin</b>, Y.-C. Liu, C.-H. Chuang, and Y.-C. Tseng, "Node Apparatus, Node Quantity Adjustment Method, and Tangible Machine-readable Medium for a Sensor Network", US Patent, No. US 2010/0195515 A1 (2010/8/5, owned by III)</li>
-<li>林致宇，刘永之，庄哲熙，曾煜棋，"用于一传感器网络的节点装置及节点数量调整方法", China, CN101827460A (2009/3/2, owned by III)</li>
-<li>曾煜棋，呂書賢，<b>林致宇</b>，"無線網路", 201112810, Taiwan (2011/04/01, owned by Realtek)</li>
-<li>Y.-C. Tseng, S.-H. Lu, and <b>C.-Y. Lin</b>, "Wireless Network", US Patent, No. US 2010/0165923 A1 (2010/7/1, owned by Realtek)</li>
-<li>曾煜棋，吕书贤，林致宇，"无线网络", China, CN101772124A (2010/7/7, owned by Realtek)</li>
-<!-- <li>郑胜丰，宋政桓，林致宇，"利用网络搜索手段的通信装置来电号码判别模块及方法", China, CN102694899A (2012/9/26, owned by Gogolook)</li> -->
-</ol>
-</div>
+        <!-- 學歷與經歷雙欄 (Education & Experience) -->
+        <section class="two-col-grid" id="education-experience">
+            <!-- 學歷 Education -->
+            <div>
+                <div class="section-header">
+                    <h2 class="section-title"><i data-lucide="graduation-cap"></i> 學歷背景 (Education)</h2>
+                </div>
 
-<!-- 學術活動 -->
-<div id="aa_list">
-<div class="title_below">Academic Activities</div>
+                <div class="timeline">
+                    <!-- Ph.D. -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2003/09 ~ 2007/09</div>
+                        <div class="timeline-card">
+                            <h4>國立交通大學 資訊工程學系 博士 (Ph.D.)</h4>
+                            <div class="institution">National Chiao Tung University (Taiwan)</div>
+                            <div class="details">
+                                論文：<a href="./PhD_Thesis.pdf" target="_blank">Communication Protocols for Location Management in Object Tracking Sensor Networks</a><br>
+                                指導教授：曾煜棋 教授 (Prof. Yu-Chee Tseng)、彭文志 教授 (Prof. Wen-Chih Peng)
+                            </div>
+                        </div>
+                    </div>
 
-<h3><i>Reviewer:</i></h3>
+                    <!-- Visiting -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2006/09 ~ 2006/12</div>
+                        <div class="timeline-card">
+                            <h4>美國俄亥俄州立大學 訪問學者 (Visiting Student)</h4>
+                            <div class="institution">Ohio State University (USA), Dept. of Computer Science and Engineering</div>
+                        </div>
+                    </div>
 
-<ul type="circle">
-<li>IEEE Transactions on Vehicular Technology</li>
-<li>IEEE Transactions on Mobile Computing</li>
-<li>IEEE Communications Letters</li>
-<li>IEEE Transactions on Systems, Man and Cybernetics</li>
-<li>The Computer Journal</li>
-<li>Computer Networks</li>
-<li>IET Communications</li>
-<li>Journal of Information Science and Engineering</li>
-<li>Information Processing Letters</li>
-<li>Journal of Communications and Networks</li>
-<li>Journal of Internet Technology</li>
-<li>Sensors</li>
-<li>Ad Hoc Networks</li>
-<li>《亞東學報》第三十期審查委員</li>
-<li>IEEE Wireless Communication &amp; Networking Conference (WCNC), 2006</li>
-<li>IEEE Wireless Communication &amp; Networking Conference (WCNC), 2007</li>
-<li>The ACM International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc), 2008</li>
-<li>MCECN Workshop on Mobile Computing and Emerging Communication Networks, 2010</li>
-<li>第二屆海峽兩岸研討論, 2008</li>
-<li>全國電信研討會(National Symposium Telecommunications (NST), 2008)</li>
-<li>全國電信研討會(National Symposium Telecommunications (NST), 2009)</li>
-<li>全國電信研討會(National Symposium Telecommunications (NST), 2011)</li>
-<li>ICDCS 2013</li>
-<li>長庚資工畢業專題展評審 (2015)</li>
-<li>2015年靜宜大學創新創意專題決賽評審 (2015/12/3)</li>
-</ul>
+                    <!-- M.S. -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">1998/09 ~ 2000/06</div>
+                        <div class="timeline-card">
+                            <h4>國立中央大學 資訊工程學系 碩士 (M.S.)</h4>
+                            <div class="institution">National Central University (Taiwan)</div>
+                            <div class="details">
+                                論文：<a href="./Master_Thesis.pdf" target="_blank">A Multi-Channel MAC Protocol with On-Demand Channel Assignment for Mobile Ad Hoc Networks</a><br>
+                                指導教授：許健平 教授 (Prof. Jang-Ping Sheu)、曾煜棋 教授 (Prof. Yu-Chee Tseng)
+                            </div>
+                        </div>
+                    </div>
 
-<h3><i>Technical Program Committee Member:</i></h3>
+                    <!-- B.S. -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">1993/09 ~ 1998/06</div>
+                        <div class="timeline-card">
+                            <h4>國立中央大學 資訊工程學系 學士 (B.S.)</h4>
+                            <div class="institution">National Central University (Taiwan)</div>
+                            <div class="details">
+                                專題：A Proxy Server for Wireless Networks<br>
+                                指導教授：許健平 教授、曾煜棋 教授
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<ul type="circle">
-<li>The Second International Conference on Sensor Technologies and Applications (SENSORCOMM), 2008</li>
-<li>The Third International Conference on Sensor Technologies and Applications (SENSORCOMM), 2009</li>
-<li>The Fourth International Conference on Sensor Technologies and Applications (SENSORCOMM), 2010</li>
-<li>The Second International Workshop on Sensor Networks (SN), 2009</li>
-<li>The Third International Workshop on Sensor Networks (SN), 2010</li>
-</ul>
+            <!-- 經歷 Experience -->
+            <div>
+                <div class="section-header">
+                    <h2 class="section-title"><i data-lucide="briefcase"></i> 主要經歷 (Experiences)</h2>
+                    <span class="section-subtitle">Partial List</span>
+                </div>
 
-<h3>研討會主持人:</h3>
+                <div class="experience-card-list">
+                    <div class="exp-item">
+                        <span class="exp-badge exp-current">2026/02 ~ Present</span>
+                        <div class="exp-text">
+                            <strong>國立臺灣海洋大學 資訊工程學系</strong><br>
+                            副教授 (Associate Professor)
+                        </div>
+                    </div>
 
-<ul type="circle">
-<li>第六屆台灣數位學習發展研討會Session I：語言學習共同主持人</li>
-<li>Sensors 2012 (Practice and Evaluation of Sensor Networks Session,Session Chair)</li>
-</ul>
-</div>
+                    <div class="exp-item">
+                        <span class="exp-badge">2020/02 ~ 2026/01</span>
+                        <div class="exp-text">
+                            <strong>國立臺灣海洋大學 資訊工程學系</strong><br>
+                            助理教授 (Assistant Professor)
+                        </div>
+                    </div>
 
-<div id="talk_list">
-<div class="title_below">Invited Talks (Partial)</div>
+                    <div class="exp-item">
+                        <span class="exp-badge">2008/02 ~ 2011/07</span>
+                        <div class="exp-text">
+                            <strong>亞洲大學 應用資訊與多媒體學系</strong><br>
+                            助理教授 (Assistant Professor)
+                        </div>
+                    </div>
 
-<ol>
-<li>Multi-Channel Protocols for Wireless Mesh Networks (2007/12/4, National Chiao Tung University)</li>
-<li>Medium Access Control (MAC) Protocols for Wireless Sensor Networks (2007/12/6, National Chiao Tung University)</li>
-<li>The Usage and Applications of PowerPoint (2008/3/26 數位教材製作體驗營)</li>
-<li>Medium Access Control (MAC) Protocols for Wireless Sensor Networks, 亞洲大學資科系九十六學年度第二學期專題研討</li>
-<li>Object-Tracking Sensor Networks, 亞洲大學資科系九十七學年度第一學期專題研討</li>
-<li>Android基本應用程式設計(亞東技術學院『Android平台手機程式設計與實務開發』研習營，2010/7/7)</li>
-<li>Mobile Devices and Applications in the Cloud Computing World (2010/12/22, Industrial Technology Research Institute of Taiwan, R.O.C)</li>
-<li>Mobile Device Programming (2010/12/24, Industrial Technology Research Institute of Taiwan, R.O.C)</li>
-<li>Android 行動裝置之網路應用 (2011/3/24, 大同大學資訊經營學系)</li>
-<li>智慧型手機創新應用之我見 (2011/9/1, WASN 2011大會導讀)</li>
-<li>智慧型手機創新應用之我見 (2011/10/6, 淡江大學)</li>
-<li>雲端行動應用開發經驗分享(2014/6/5, 大同大學)</li>
-<li>【行動終端】軟體開發上架與創新創業交流研習會講者 (2014/10/24, 台北科技大學)</li>
-<li>App 創意發想與推廣 (2014/11/27, 正修科技大學)</li>
-<li>行動終端使用者體驗 (2014/11/27, 正修科技大學)</li>
-<li>Android 進階應用 (資料庫與UI的連結) (2015/06/13, 靜宜大學)</li>
-<li>Android Wear 應用開發 (2015/07/05, 台大生醫電資營)</li>
-<li>NFC與IoT應用 (2015/07/06, 台大生醫電資營)</li>
-<li>我的資訊人生 (2015/10/27, 國立嘉義大學)</li>
-<li>如何寫出高下載量的App (2015/11/3, 國立嘉義大學)</li>
-<li>如何寫出高下載量的App (2016/4/12, 逢甲大學)</li>
-<li>如何寫出高下載量的App (2016/12/19, 玄奘大學)</li>
-<li>App開發、經營與行銷 （2020/11/25, 國立臺北商業大學)</li>
-</ol>
-</div>
+                    <div class="exp-item">
+                        <span class="exp-badge">2018 ~ 2019</span>
+                        <div class="exp-text">
+                            <strong>國立交通大學 資訊工程學系</strong><br>
+                            兼任授課師資（課程：Android 程式設計 - Kotlin）
+                        </div>
+                    </div>
 
-<div id="award_list">
-<div class="title_below">Awards</div>
-<ol>
-<li>2014 第7屆iT邦幫忙鐵人賽 App 開發組冠軍</li>
-<li>2013 黃金企鵝獎最佳效能獎</li>
-<li>Recipient of the Phi Tau Phi Scholastic Honor, 2000</li>
-<li>亞洲大學97學年度教材製作競賽，實體教具組第一名</li>
-<li>亞洲大學98學年度教材製作競賽，電腦輔助教學軟體組第二名</li>
-<li>亞洲大學99學年度教材製作競賽，電腦輔助教學軟體組第二名</li>
-<li>亞洲大學帶領學生赴日本參加日本金澤工業大學工程設計專題發表</li>
-<li>指導學生參加2013電信創新應用大賽，獲得行動 App 校園組冠軍</li>
-<li>指導學生參加2021中山大學5G實驗場域創新應用競賽，獲得創意組佳作</li>
-</ol>
-</div>
+                    <div class="exp-item">
+                        <span class="exp-badge">2017/02 ~ 2017/06</span>
+                        <div class="exp-text">
+                            <strong>台北市立大學 資訊科學系</strong><br>
+                            兼任助理教授（Swift 程式語言與 iOS 專案設計）
+                        </div>
+                    </div>
 
-<div id="certificate_list">
-<div class="title_below">Certificates</div>
-<ol>
-<li>雲端技術資訊管理師證書 (工業技術研究院)</li>
-<li>雲端技術資訊管理師職能鑑定合格, 2011</li>
-<li>日語檢定JLPT三級, 2008</li>
-</ol>
-</div>
+                    <div class="exp-item">
+                        <span class="exp-badge">2016/05</span>
+                        <div class="exp-text">
+                            <strong>交通大學電子系人才培訓中心</strong> 行動裝置應用開發講師
+                        </div>
+                    </div>
 
-<div id="project_list">
-<div class="title_below">Projects</div>
-<ol>
-<li>計畫名稱：物件追蹤感測網路上能夠容忍不精確位置資訊的位置管理機制。補助機構：行政院國家科學委員會。九十七學年度。(NSC 97 - 2218 - E - 468 - 008 -)</li>
-<li>計畫名稱：一個適用於事件驅動無線感測網路並利用了感測資料空間相關性的媒介存取控制協定。補助機構：行政院國家科學委員會。九十八學年度。(NSC 98 - 2221 - E - 468 - 011 -)</li>
-<li>計畫名稱：無線感測網路上一個以四分樹為基礎的位置管理系統。補助機構：行政院國家科學委員會。九十九學年度。(NSC 99 - 2221 - E - 468 - 004 -)</li>
-</ol>
-</div>
+                    <div class="exp-item">
+                        <span class="exp-badge">2015/03 ~ 2015/10</span>
+                        <div class="exp-text">
+                            <strong>茂為歐買尬數位科技</strong> 技術顧問
+                        </div>
+                    </div>
 
-</body></html>
+                    <div class="exp-item">
+                        <span class="exp-badge">2014/07 ~ 2015/02</span>
+                        <div class="exp-text">
+                            <strong>有無科技</strong> 技術長 (CTO)
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <span class="exp-badge">2013 ~ 2014</span>
+                        <div class="exp-text">
+                            <strong>國立交通大學 資訊工程學系</strong> 兼任助理教授（雲端行動感測應用）
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <span class="exp-badge">2009/07 ~ 2009/09</span>
+                        <div class="exp-text">
+                            <strong>中央研究院 資訊科學研究所</strong> 訪問學者 (Visiting Scholar)
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <span class="exp-badge">2007/09 ~ 2008/01</span>
+                        <div class="exp-text">
+                            <strong>瑞昱半導體 - 交大聯合研發中心</strong> 兼任工程師
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 學術著作區塊 Publications -->
+        <section class="section-block" id="publications">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="book-marked"></i> 學術著作 (Publication List)</h2>
+                    <span class="section-subtitle">Journal Articles, Conference Papers, Books & Book Chapters</span>
+                </div>
+            </div>
+
+            <!-- 分類切換按鈕 Tabs -->
+            <div class="pub-filter-nav">
+                <button class="pub-tab-btn active" onclick="filterPubs('all')">全部著作 <span class="pub-tab-count">All</span></button>
+                <button class="pub-tab-btn" onclick="filterPubs('journal')">期刊論文 (Journal) <span class="pub-tab-count">16</span></button>
+                <button class="pub-tab-btn" onclick="filterPubs('conference')">研討會論文 (Conference) <span class="pub-tab-count">35</span></button>
+                <button class="pub-tab-btn" onclick="filterPubs('books')">專書與專書章節 (Books) <span class="pub-tab-count">6</span></button>
+            </div>
+
+            <!-- 著作卡片清單 -->
+            <div class="pub-list" id="pubList">
+
+                <!-- Journal 2026 -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">ESCI</span>
+                            <span class="pub-badge pub-badge-ei">EI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2026</span>
+                    </div>
+                    <div class="pub-title">A Traffic Classification-based Traffic Engineering Framework in Software-Defined Networking</div>
+                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang</div>
+                    <div class="pub-venue">International Journal of Communication Networks and Distributed Systems, vol. 32, no. 1, pp. 33–57, 2026.</div>
+                    <div class="pub-links">
+                        <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJCNDS.2026.150916" target="_blank" class="pub-link-btn"><i data-lucide="external-link" style="width:13px;height:13px;"></i> Available Online</a>
+                    </div>
+                </div>
+
+                <!-- Journal 2025 - TAES -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">A Distributed Beam Hopping Strategy with Load Balancing and Coordinated Interference Avoidance for Heterogeneous Satellite Systems</div>
+                    <div class="pub-authors">Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b></div>
+                    <div class="pub-venue">IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025. DOI: 10.1109/TAES.2025.3633205</div>
+                </div>
+
+                <!-- Journal 2025 - TIFS -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Fake Path Co-Construction Source Location Privacy Protection Scheme Design for UWSNs</div>
+                    <div class="pub-authors">Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh</div>
+                    <div class="pub-venue">IEEE Transactions on Information Forensics and Security, vol. 20, pp. 9139-9150, 2025. DOI: 10.1109/TIFS.2025.3597212</div>
+                </div>
+
+                <!-- Journal 2025 - JNSM -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Employing Federated Semi-Supervised Learning for Network Traffic Classification</div>
+                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An</div>
+                    <div class="pub-venue">Journal of Network and Systems Management, vol. 33, no. 53, pp. 1-30, May 2025.</div>
+                </div>
+
+                <!-- Journal 2023 - Electronics -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <div class="pub-title">Anti-Jamming Low-Latency Channel Hopping Protocol for Cognitive Radio Networks</div>
+                    <div class="pub-authors">Y.-Heng Hsieh, C.-M. Chao, C.-C. Yeh, and <b>C.-Y. Lin</b></div>
+                    <div class="pub-venue">Electronics, 12(8):1811, 2023. DOI: 10.3390/electronics12081811</div>
+                </div>
+
+                <!-- Journal 2023 - IEEE TVT -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <div class="pub-title">WFID: Driver Identity Recognition Based on Wi-Fi Signals</div>
+                    <div class="pub-authors">Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b></div>
+                    <div class="pub-venue">IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan. 2023. DOI: 10.1109/TVT.2022.3203725</div>
+                </div>
+
+                <!-- Journal 2022 - Computer Networks -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2022</span>
+                    </div>
+                    <div class="pub-title">Anti-Jamming Channel Hopping Protocol Design Based on Channel Occupancy Probability for Cognitive Radio Networks</div>
+                    <div class="pub-authors">K.-W. Chen, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh</div>
+                    <div class="pub-venue">Computer Networks, Vol. 214, Sep. 2022.</div>
+                </div>
+
+                <!-- Journal 2022 - IJAHUC -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2022</span>
+                    </div>
+                    <div class="pub-title">Transmission Range Determination and Antenna Deployment to Recognize Fitness Actions Using Wi-Fi Signals</div>
+                    <div class="pub-authors">W.-C. Liang, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh</div>
+                    <div class="pub-venue">International Journal of Ad Hoc and Ubiquitous Computing, Vol. 41, Issue 4, Oct. 2022.</div>
+                </div>
+
+                <!-- Journal 2021 - IJAHUC -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2021</span>
+                    </div>
+                    <div class="pub-title">A TDMA Protocol with Reinforcement Learning Slot Selection for MANETs</div>
+                    <div class="pub-authors"><b>C.-Y. Lin</b>, C.-H. Wang, and Y.-C. Tseng</div>
+                    <div class="pub-venue">International Journal of Ad Hoc and Ubiquitous Computing, 2021 Vol.37 No.1, pp.16 - 25.</div>
+                </div>
+
+                <!-- Journal Classic Selected -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCIE</span>
+                            <span class="pub-badge pub-badge-ei">EI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2010</span>
+                    </div>
+                    <div class="pub-title">Imprecision-tolerant Location Management for Object-tracking Wireless Sensor Networks</div>
+                    <div class="pub-authors"><b>C.-Y. Lin</b>, Y.-C. Tseng, and Yung-Chih Liu</div>
+                    <div class="pub-venue">The Computer Journal, Vol. 53, No. 3, 2010, pp. 351-364.</div>
+                </div>
+
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2006</span>
+                    </div>
+                    <div class="pub-title">Efficient In-Network Moving Object Tracking in Wireless Sensor Networks</div>
+                    <div class="pub-authors"><b>C.-Y. Lin</b>, W.-C. Peng, and Y.-C. Tseng</div>
+                    <div class="pub-venue">IEEE Transactions on Mobile Computing, Vol. 5, No. 8, Aug. 2006, pp. 1044-1056.</div>
+                </div>
+
+                <!-- Conference 2026 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2026</span>
+                    </div>
+                    <div class="pub-title">應用於車輛訊息關聯之自動標記框架：以真實世界資料為驗證</div>
+                    <div class="pub-authors">王威翔、許為庭、<b>林致宇</b></div>
+                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2026)，台灣，台中，2026年8月.</div>
+                </div>
+
+                <!-- Conference 2025 APWCS Pedestrian -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation</div>
+                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu</div>
+                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025, pp. 1-5. DOI: 10.1109/APWCS67981.2025.11151960</div>
+                </div>
+
+                <!-- Conference 2025 APWCS IoTtalk -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Implementing Federated Learning via IoTtalk: A Smart Home Case Study</div>
+                    <div class="pub-authors">Liyakat Ali, and <b>Chih-Yu Lin</b></div>
+                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025, pp. 1-5. DOI: 10.1109/APWCS67981.2025.11151953</div>
+                </div>
+
+                <!-- Conference 2025 MC -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">聯邦學習架構下聚合演算法於流量分類應用中的影響</div>
+                    <div class="pub-authors">蔡震霖、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
+                </div>
+
+                <!-- Conference 2025 MC 2 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">樣本數及取樣方法的對於網路流量分類效能的影響</div>
+                    <div class="pub-authors">廖翊均、安立郁、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
+                </div>
+
+                <!-- Conference 2024 PIMRC -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">Label Expansion through Walking Trajectories for Wi-Fi CSI-Based Indoor Localization</div>
+                    <div class="pub-authors">Wei-Rong Chen, <b>Chih-Yu Lin</b>, and Yu-Chee Tseng</div>
+                    <div class="pub-venue">IEEE International Symposium on Personal, Indoor and Mobile Radio Communication (PIMRC), Valencia, Spain, Sep. 2024.</div>
+                </div>
+
+                <!-- Conference 2024 WASN -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">FedMDFNN 模型之改進及效能分析</div>
+                    <div class="pub-authors">劉仲恒、<b>林致宇</b></div>
+                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2024)，台灣，台北，2024年8月.</div>
+                </div>
+
+                <!-- Conference 2024 MC -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">資料不平衡對網路流量分類的影響</div>
+                    <div class="pub-authors">安立郁、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十八屆行動計算研討會 (MC 2024)，台灣，台北，2024年8月.</div>
+                </div>
+
+                <!-- Conference 2023 APWCS -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <div class="pub-title">A Simple Deep Q-Network based Feature Selection Method</div>
+                    <div class="pub-authors">Albert Budi Christian, Yi-Qi Zhong, Wan-Hsun Hu, Chia-Hsuan Yu, and <b>Chih-Yu Lin</b></div>
+                    <div class="pub-venue">IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS 2023), Tainan, Taiwan, Aug. 2023.</div>
+                </div>
+
+                <!-- Conference 2023 MC -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <div class="pub-title">使用 Autoencoder 和聯邦式學習進行網路流量分類</div>
+                    <div class="pub-authors">江庭葳、曾千庭、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十七屆行動計算研討會 (MC 2023)，台灣，基隆，2023年8月.</div>
+                </div>
+
+                <!-- Conference 2022 MCSoC -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2022</span>
+                    </div>
+                    <div class="pub-title">Radar and Camera Fusion for Object Forecasting in Driving Scenarios</div>
+                    <div class="pub-authors">Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
+                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Malaysia, Dec. 2022.</div>
+                </div>
+
+                <!-- Conference 2021 MCSoC -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2021</span>
+                    </div>
+                    <div class="pub-title">Data Fusion Driven Lane-level Precision Data Transmission for V2X Road Applications</div>
+                    <div class="pub-authors">Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
+                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Singapore, Dec. 2021.</div>
+                </div>
+
+                <!-- Books -->
+                <div class="pub-card" data-category="books">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-ei">Book</span>
+                        </div>
+                        <span class="pub-year">2015</span>
+                    </div>
+                    <div class="pub-title">Android 程式設計入門與應用 (第二版)</div>
+                    <div class="pub-authors"><b>林致宇</b> 著</div>
+                    <div class="pub-venue">全華出版, ISBN: 978-957-21-9833-9</div>
+                    <div class="pub-links">
+                        <a href="http://www.books.com.tw/products/0010678395" target="_blank" class="pub-link-btn"><i data-lucide="external-link" style="width:13px;height:13px;"></i> 博客來書籍資訊</a>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-category="books">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-ei">Book</span>
+                        </div>
+                        <span class="pub-year">2011</span>
+                    </div>
+                    <div class="pub-title">無線網路：通訊協定、感測網路、射頻技術與應用服務</div>
+                    <div class="pub-authors">曾煜棋、林政寬、<b>林致宇</b>、潘孟鉉</div>
+                    <div class="pub-venue">碁峰出版, ISBN: 9789862763094</div>
+                </div>
+
+                <div class="pub-card" data-category="books">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-ei">Book Chapter</span>
+                        </div>
+                        <span class="pub-year">2007</span>
+                    </div>
+                    <div class="pub-title">Wireless Mesh Networks: Design Principles & Multi-Channel Protocols</div>
+                    <div class="pub-authors">W.-H. Tam, <b>C.-Y. Lin</b>, and Y.-C. Tseng</div>
+                    <div class="pub-venue">Wireless Ad Hoc Networking: Personal-Area, Local-Area, and Sensory-Area Networks, Auerbach Publications, 2007. (ISBN: 978-0849392542)</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 專利與研發成果 Patents -->
+        <section class="section-block" id="patents">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="shield-check"></i> 發明專利 (Patents)</h2>
+                    <span class="section-subtitle">US, Taiwan, and China Patents</span>
+                </div>
+            </div>
+
+            <div class="grid-cards">
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i data-lucide="award"></i>
+                        <h4>美國發明專利 (US Patent)</h4>
+                    </div>
+                    <p>
+                        <strong>Methods and Systems of Dynamic Channel Allocation for Access Points in Wireless Networks</strong><br>
+                        Patent No. 7,376,099 (2008/05/20)<br>
+                        發明人：Y.-C. Tseng, <b>C.-Y. Lin</b>, B.-R. Lin (owned by III)
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i data-lucide="award"></i>
+                        <h4>美國發明專利 (US Patent)</h4>
+                    </div>
+                    <p>
+                        <strong>Node Apparatus, Node Quantity Adjustment Method, and Tangible Machine-readable Medium for a Sensor Network</strong><br>
+                        Patent No. US 2010/0195515 A1 (2010/08/05)<br>
+                        發明人：<b>C.-Y. Lin</b>, Y.-C. Liu, C.-H. Chuang, Y.-C. Tseng
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i data-lucide="award"></i>
+                        <h4>美國發明專利 (US Patent)</h4>
+                    </div>
+                    <p>
+                        <strong>Wireless Network</strong><br>
+                        Patent No. US 2010/0165923 A1 (2010/07/01)<br>
+                        發明人：Y.-C. Tseng, S.-H. Lu, <b>C.-Y. Lin</b> (owned by Realtek)
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i data-lucide="award"></i>
+                        <h4>中華民國發明專利 (Taiwan)</h4>
+                    </div>
+                    <p>
+                        <strong>無線網路以及無線基地台頻道的動態配置方法與系統</strong><br>
+                        專利證號：No. I 258276 (2006.7-2024.11)<br>
+                        發明人：曾煜棋，<b>林致宇</b>，林炳榕
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i data-lucide="award"></i>
+                        <h4>中華民國發明專利 (Taiwan)</h4>
+                    </div>
+                    <p>
+                        <strong>用於一感測網路之節點裝置、節點數量調整方法及其電腦程式產品</strong><br>
+                        專利公開號：201031143 (2010/08/16)<br>
+                        發明人：<b>林致宇</b>，劉永之，莊哲熙，曾煜棋
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i data-lucide="award"></i>
+                        <h4>中華民國發明專利 (Taiwan)</h4>
+                    </div>
+                    <p>
+                        <strong>無線網路</strong><br>
+                        專利公開號：201112810 (2011/04/01)<br>
+                        發明人：曾煜棋，呂書賢，<b>林致宇</b> (owned by Realtek)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 資源與論文範本下載 Downloads -->
+        <section class="section-block" id="downloads">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="download-cloud"></i> 資源與論文範本下載 (Downloads)</h2>
+                    <span class="section-subtitle">NTOU Thesis Templates & Publications Fulltext</span>
+                </div>
+            </div>
+
+            <div class="download-grid">
+                <a href="NTOU_Thesis_Template_20260123.zip" class="download-card" download>
+                    <div class="download-icon">
+                        <i data-lucide="archive"></i>
+                    </div>
+                    <div class="download-info">
+                        <h4>海洋大學學位論文 LaTeX 範本</h4>
+                        <p>NTOU_Thesis_Template (ZIP 壓縮檔, 2026 最新版)</p>
+                    </div>
+                </a>
+
+                <a href="NTOU_Thesis_Template_Chinese_version20260123.pdf" class="download-card" target="_blank">
+                    <div class="download-icon">
+                        <i data-lucide="file-text"></i>
+                    </div>
+                    <div class="download-info">
+                        <h4>海大學位論文撰寫規範與指引</h4>
+                        <p>Chinese Version PDF (20260123)</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    Chih-Yu Lin (林致宇) 博士 / 副教授
+                    <div style="font-size:0.85rem;font-weight:normal;color:#94a3b8;margin-top:4px;">
+                        國立臺灣海洋大學 資訊工程學系 | 智慧網路實驗室 (SNLab)
+                    </div>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="#about">關於我</a></li>
+                    <li><a href="lab.html">智慧網路實驗室</a></li>
+                    <li><a href="#publications">學術著作</a></li>
+                    <li><a href="#patents">專利成果</a></li>
+                    <li><a href="#downloads">資源下載</a></li>
+                </ul>
+
+                <button class="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <i data-lucide="arrow-up" style="width:14px;height:14px;"></i>
+                    <span>返回頂端</span>
+                </button>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    &copy; 2026 Chih-Yu Lin. Department of Computer Science and Engineering, National Taiwan Ocean University.
+                </div>
+                <div>
+                    E-mail: lincyu (at) mail (dot) ntou (dot) edu (dot) tw
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 簡易互動腳本 -->
+    <script>
+        // 初始化 Lucide Icons
+        lucide.createIcons();
+
+        // 手機漢堡選單開關
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            // 點擊連結後自動關閉選單
+            document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // 著作分類過濾功能
+        function filterPubs(category) {
+            // 更新按鈕狀態
+            const buttons = document.querySelectorAll('.pub-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // 過濾卡片
+            const cards = document.querySelectorAll('#pubList .pub-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 監聽滾動事件高亮目前導覽錨點
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], header[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+
+                if (navLink) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLink.classList.add('active');
+                    } else {
+                        navLink.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

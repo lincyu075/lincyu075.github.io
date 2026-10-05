@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="國立臺灣海洋大學 智慧網路實驗室 (Smart Networking Laboratory, SNLab) - 指導教授：林致宇 博士。研究核心：網路流量分類、聯邦式學習、車聯網與協同感知。">
+    <meta name="keywords" content="智慧網路實驗室, SNLab, Smart Networking Laboratory, 林致宇, 海洋大學, NTOU, 車聯網, 聯邦學習, 流量分類, V2X, 邊緣運算">
+    <meta name="author" content="Smart Networking Laboratory (SNLab)">
+    <title>智慧網路實驗室 (Smart Networking Laboratory) - 國立臺灣海洋大學</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --primary-glow: rgba(37, 99, 235, 0.15);
+            --accent: #0284c7;
+            --accent-cyan: #06b6d4;
+            --dark: #0f172a;
+            --dark-surface: #1e293b;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 30px -5px rgba(37, 99, 235, 0.12), 0 8px 10px -6px rgba(0,0,0,0.04);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* 頂部導覽列 Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-brand-badge {
+            font-size: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 3px 8px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.88rem;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        }
+
+        /* 手機版選單切換按鈕 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--dark);
+            border-radius: var(--radius-sm);
+        }
+
+        /* 頁面主要容器 */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 104px 24px 60px;
+        }
+
+        /* Hero 區塊 */
+        .hero-section {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #eff6ff 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 48px 40px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-avatar-wrapper {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-status-pill {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #bfdbfe;
+            box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2563eb;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero-titles {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-name {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        .hero-name-en {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 4px;
+        }
+
+        .hero-role-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-affiliation {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-affiliation strong {
+            color: var(--dark);
+        }
+
+        .hero-bio {
+            color: #475569;
+            font-size: 0.98rem;
+            line-height: 1.75;
+        }
+
+        .ai-disclaimer-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius-sm);
+            padding: 7px 14px;
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.5;
+            width: fit-content;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ai-disclaimer-note i {
+            color: #6366f1;
+            flex-shrink: 0;
+        }
+
+        .hero-contact-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.86rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: var(--primary-light);
+            transform: translateY(-1px);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* 3大研究支柱 Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .stat-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .stat-info h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .stat-info p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* 通用章節樣式 Section */
+        .section-block {
+            margin-bottom: 54px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 64px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* 研究議題詳細卡片 Topic Detail Cards */
+        .topic-detail-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .topic-detail-card:hover {
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .topic-num-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .topic-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .topic-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .topic-bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .topic-bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .topic-bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .topic-bullet-list strong {
+            color: var(--dark);
+        }
+
+        /* 實驗室成員區域 Member Section */
+        .member-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .member-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .member-category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .member-category-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .member-category-title i {
+            color: var(--primary);
+        }
+
+        /* 成員空白/更新中狀態 Empty State Card */
+        .empty-member-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: var(--radius-md);
+            padding: 36px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .empty-member-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .empty-member-box h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .empty-member-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        /* 著作分類過濾器 Publication Filter Tabs */
+        .pub-filter-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .pub-tab-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pub-tab-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .pub-tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        }
+
+        .pub-tab-count {
+            font-size: 0.75rem;
+            background: rgba(0,0,0,0.06);
+            padding: 1px 7px;
+            border-radius: var(--radius-full);
+        }
+
+        .pub-tab-btn.active .pub-tab-count {
+            background: rgba(255,255,255,0.25);
+            color: white;
+        }
+
+        /* 著作卡片清單 Publication Items */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pub-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pub-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(37, 99, 235, 0.35);
+        }
+
+        .pub-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .pub-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pub-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .pub-badge-sci {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .pub-badge-ei {
+            background: #e0e7ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        .pub-badge-conf {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pub-badge-honor {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+        }
+
+        .pub-year {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .pub-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.45;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .pub-authors b, .pub-authors strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .pub-venue {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* 招生與聯絡專區 Join Us & Contact */
+        .join-card {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 36px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .join-content h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .join-content p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .join-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .join-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        .join-features i {
+            color: #38bdf8;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .join-contact-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .join-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .join-contact-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: rgba(37, 99, 235, 0.25);
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .join-contact-text h5 {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .join-contact-text p {
+            font-size: 0.95rem;
+            color: white;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* 頁尾 Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 48px 24px 36px;
+            margin-top: 60px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .footer-brand {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.84rem;
+        }
+
+        .back-to-top-btn {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .back-to-top-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* 響應式佈局 RWD */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 28px;
+            }
+
+            .hero-avatar-wrapper {
+                margin: 0 auto;
+            }
+
+            .hero-titles, .hero-affiliation, .hero-contact-chips, .hero-actions {
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .join-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-container {
+                padding-top: 88px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .hero-section {
+                padding: 32px 20px;
+            }
+
+            .hero-name {
+                font-size: 1.85rem;
+            }
+
+            .footer-top, .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頂部浮動導覽列 Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <i data-lucide="network" style="color:var(--primary);width:22px;height:22px;"></i>
+                <span>智慧網路實驗室 (SNLab)</span>
+                <span class="nav-brand-badge">NTOU</span>
+            </a>
+
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link">實驗室簡介</a></li>
+                <li><a href="#topics" class="nav-link">研究議題</a></li>
+                <li><a href="#members" class="nav-link">實驗室成員</a></li>
+                <li><a href="#outcomes" class="nav-link">研究成果</a></li>
+                <li><a href="#join-us" class="nav-link">招生與聯絡</a></li>
+                <li><a href="index.html" class="nav-cta"><i data-lucide="user" style="width:16px;height:16px;"></i> 指導教授首頁</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要內容區塊 -->
+    <main class="page-container">
+
+        <!-- Hero 區塊 -->
+        <section class="hero-section" id="hero">
+            <div class="hero-grid">
+                <div class="hero-avatar-wrapper">
+                    <img src="chihyu2012.jpg" alt="Prof. Chih-Yu Lin" class="hero-avatar">
+                    <div class="hero-status-pill">
+                        <span class="status-dot"></span>
+                        <span>SNLab @ NTOU</span>
+                    </div>
+                </div>
+
+                <div class="hero-content">
+                    <div class="hero-titles">
+                        <div>
+                            <h1 class="hero-name">智慧網路實驗室</h1>
+                            <span class="hero-name-en">Smart Networking Laboratory (SNLab)</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-affiliation">
+                        <i data-lucide="map-pin" style="width:18px;height:18px;color:var(--primary);"></i>
+                        <span>國立臺灣海洋大學 資訊工程學系 <strong>(Dept. of CSE, NTOU)</strong></span>
+                    </div>
+
+                    <p class="hero-bio">
+                        由<strong>林致宇 博士</strong>主持與指導。本實驗室專注於前瞻通訊網路、邊緣運算與分散式人工智慧技術之研發。研究核心圍繞於<strong>網路流量分類與智慧管理</strong>、<strong>隱私保護聯邦式學習</strong>，以及<strong>車聯網 (V2X) 與多感測器協同感知</strong>等課題，致力培育具備網路協定設計、機器學習應用與分散式系統開發能力的資訊研發人才。
+                    </p>
+
+                    <!-- AI 輔助產生註明 -->
+                    <div class="ai-disclaimer-note">
+                        <i data-lucide="sparkles" style="width:15px;height:15px;"></i>
+                        <span>註：本網頁內容由 AI 輔助彙整生成，雖已盡力校對核實，仍可能存在疏漏，敬請見諒。</span>
+                    </div>
+
+                    <div class="hero-contact-chips">
+                        <div class="contact-chip">
+                            <i data-lucide="user-check" style="width:15px;height:15px;"></i>
+                            <span>指導教授：<b>林致宇 博士 / 副教授</b></span>
+                        </div>
+                        <a href="mailto:lincyu@mail.ntou.edu.tw" class="contact-chip">
+                            <i data-lucide="mail" style="width:15px;height:15px;"></i>
+                            <span>lincyu (at) mail (dot) ntou (dot) edu (dot) tw</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#topics" class="btn btn-primary">
+                            <i data-lucide="compass" style="width:18px;height:18px;"></i>
+                            <span>瀏覽研究議題</span>
+                        </a>
+                        <a href="#outcomes" class="btn btn-secondary">
+                            <i data-lucide="award" style="width:18px;height:18px;"></i>
+                            <span>實驗室研究成果</span>
+                        </a>
+                        <a href="index.html" class="btn btn-secondary">
+                            <i data-lucide="arrow-left" style="width:18px;height:18px;"></i>
+                            <span>返回指導教授首頁</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3大核心研究議題總覽 Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="activity"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>1. 網路流量分類</h4>
+                    <p>深度學習特徵萃取、資料不平衡/少樣本處理、半監督式學習與 SDN 流量工程排程。</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="git-merge"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>2. 聯邦式學習</h4>
+                    <p>Non-IID 異質設備模型聚合演算法、隱私保護流量分析與 IoT 邊緣智慧平台整合。</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon-box">
+                    <i data-lucide="navigation"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>3. 車聯網與協同感知</h4>
+                    <p>V2X 車載通訊、雷達/攝影機多感測器資料融合、周遭環境自動標記法與情境感知。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究議題詳細介紹 Topics -->
+        <section class="section-block" id="topics">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="layers"></i> 研究議題 (Research Topics)</h2>
+                    <span class="section-subtitle">Core Research Pillars & Methodologies</span>
+                </div>
+            </div>
+
+            <!-- 議題 1 -->
+            <div class="topic-detail-card">
+                <div class="topic-header">
+                    <div class="topic-num-badge">1</div>
+                    <h3>網路流量分類 (Network Traffic Classification)</h3>
+                </div>
+                <p class="topic-desc">
+                    隨著新興應用（如影音串流、雲端運算、加密通訊協定）蓬勃發展，網路流量呈現高度動態化與加密化特徵。精準且即時的流量分類是實現軟體定義網路 (SDN) 流量工程、QoS/QoE 頻寬調配與資安防護的核心關鍵。
+                </p>
+                <ul class="topic-bullet-list">
+                    <li><strong>特徵工程與深度學習模型</strong>：研究高效特徵萃取機制，利用 CNN、LSTM、Autoencoder 等神經網路模型分析封包時空特徵。</li>
+                    <li><strong>資料不平衡與少樣本學習</strong>：解決真實網路環境中常見的類別不均衡 (Class Imbalance) 與少數新興應用樣本不足之分類瓶頸。</li>
+                    <li><strong>半監督式與自監督式學習</strong>：降低人工標記高昂成本，利用未標記數據提升分類準確度與模型泛化能力。</li>
+                    <li><strong>軟體定義網路 (SDN) 流量工程整合</strong>：依據流量分類結果即時制定動態路由與頻寬排程策略。</li>
+                </ul>
+            </div>
+
+            <!-- 議題 2 -->
+            <div class="topic-detail-card">
+                <div class="topic-header">
+                    <div class="topic-num-badge">2</div>
+                    <h3>聯邦式學習 (Federated Learning)</h3>
+                </div>
+                <p class="topic-desc">
+                    在強調個人隱私保護與邊緣運算的發展趨勢下，聯邦式學習 (Federated Learning, FL) 讓多個邊緣節點在「原始資料不出本地」的前提下進行協同模型訓練，有效降低隱私洩漏風險與頻寬傳輸負擔。
+                </p>
+                <ul class="topic-bullet-list">
+                    <li><strong>高效率聚合演算法設計</strong>：針對邊緣設備運算能力不均與 Non-IID（非獨立同分布）數據分布，研發兼具快速收斂與抗噪能力的聚合演算法。</li>
+                    <li><strong>隱私保護分散式流量分析</strong>：結合聯邦學習架構與 Semi-Supervised Learning，實現跨網域、跨設備之分散式流量特徵分類。</li>
+                    <li><strong>物聯網與邊緣系統平台整合</strong>：結合智慧家庭、IoTtalk 等物聯網架構，實現低延遲、高隱私之分散式智慧感測系統。</li>
+                    <li><strong>通訊負擔最佳化與模型輕量化</strong>：降低模型參數在伺服端與客戶端之間的通訊頻寬消耗。</li>
+                </ul>
+            </div>
+
+            <!-- 議題 3 -->
+            <div class="topic-detail-card">
+                <div class="topic-header">
+                    <div class="topic-num-badge">3</div>
+                    <h3>車聯網與協同感知 (Internet of Vehicles & Cooperative Perception)</h3>
+                </div>
+                <p class="topic-desc">
+                    結合車載通訊 (V2X, Vehicle-to-Everything) 與多感測器資料融合技術，突破單一車輛視野遮蔽與感知距離極限，建構高可靠度與即時性的全域環境感知體系。
+                </p>
+                <ul class="topic-bullet-list">
+                    <li><strong>多感測器資料融合 (Multi-Sensor Data Fusion)</strong>：融合車載毫米波雷達 (Radar)、光達 (LiDAR)、攝影機 (Camera) 與無線感測訊號，提升障礙物預測與自駕情境感知 (Situational Awareness)。</li>
+                    <li><strong>車輛周遭環境自動標記法</strong>：設計自動化標註機制，加速感知模型訓練並提升辨識精確度。</li>
+                    <li><strong>車道級精準通訊與傳輸調度 (Lane-level Precision Transmission)</strong>：在密集車流環境下實現高頻寬、低碰撞的車載通訊封包調度。</li>
+                    <li><strong>多感測器協同行人定位與自駕模擬</strong>：基於多感測器協同技術進行行人高精度定位，並建立 V2X 模擬驗證平台。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 實驗室成員 Members -->
+        <section class="section-block" id="members">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="users"></i> 實驗室成員 (Lab Members)</h2>
+                    <span class="section-subtitle">Current Students & Alumni</span>
+                </div>
+            </div>
+
+            <div class="member-container">
+                <!-- 在學學生 -->
+                <div class="member-category-card">
+                    <div class="member-category-header">
+                        <div class="member-category-title">
+                            <i data-lucide="graduation-cap"></i>
+                            <span>1. 在學學生 (Current Students)</span>
+                        </div>
+                        <span class="badge" style="font-size:0.8rem;background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:20px;font-weight:600;">碩士班 / 專題生</span>
+                    </div>
+
+                    <div class="empty-member-box">
+                        <div class="empty-member-icon">
+                            <i data-lucide="user-plus" style="width:24px;height:24px;"></i>
+                        </div>
+                        <h4>在學學生名單更新中</h4>
+                        <p>
+                            本實驗室持續招募對網路流量分類、聯邦式學習與車聯網有熱忱之<strong>碩士班研究生</strong>及<strong>大學部專題生</strong>，歡迎聯繫林致宇老師洽談加入！
+                        </p>
+                        <a href="#join-us" class="btn btn-primary" style="margin-top:8px;padding:8px 18px;font-size:0.86rem;">
+                            <i data-lucide="mail" style="width:14px;height:14px;"></i> 申請加入實驗室
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 畢業生 -->
+                <div class="member-category-card">
+                    <div class="member-category-header">
+                        <div class="member-category-title">
+                            <i data-lucide="award"></i>
+                            <span>2. 畢業生 (Alumni)</span>
+                        </div>
+                        <span class="badge" style="font-size:0.8rem;background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:20px;font-weight:600;">歷屆校友</span>
+                    </div>
+
+                    <div class="empty-member-box">
+                        <div class="empty-member-icon">
+                            <i data-lucide="briefcase" style="width:24px;height:24px;"></i>
+                        </div>
+                        <h4>畢業生成員名單更新中</h4>
+                        <p>
+                            歷屆碩士畢業生與校友名冊整理中。本實驗室畢業生廣泛任職於國內外知名科技企業與頂尖研發團隊。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究成果 Outcomes -->
+        <section class="section-block" id="outcomes">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="book-marked"></i> 代表性研究成果 (Research Outcomes)</h2>
+                    <span class="section-subtitle">Selected Publications, Projects & Honors</span>
+                </div>
+            </div>
+
+            <!-- 分類切換按鈕 Tabs -->
+            <div class="pub-filter-nav">
+                <button class="pub-tab-btn active" onclick="filterLabPubs('all')">全部成果 <span class="pub-tab-count">All</span></button>
+                <button class="pub-tab-btn" onclick="filterLabPubs('journal')">期刊論文 (Journal) <span class="pub-tab-count">5</span></button>
+                <button class="pub-tab-btn" onclick="filterLabPubs('conference')">研討會論文 (Conference) <span class="pub-tab-count">10</span></button>
+                <button class="pub-tab-btn" onclick="filterLabPubs('honors')">專利與榮譽 (Honors) <span class="pub-tab-count">3</span></button>
+            </div>
+
+            <!-- 成果卡片清單 -->
+            <div class="pub-list" id="labPubList">
+
+                <!-- Journal 1 -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">ESCI</span>
+                            <span class="pub-badge pub-badge-ei">EI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2026</span>
+                    </div>
+                    <div class="pub-title">A Traffic Classification-based Traffic Engineering Framework in Software-Defined Networking</div>
+                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang</div>
+                    <div class="pub-venue">International Journal of Communication Networks and Distributed Systems, vol. 32, no. 1, pp. 33–57, 2026.</div>
+                </div>
+
+                <!-- Journal 2 -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Employing Federated Semi-Supervised Learning for Network Traffic Classification</div>
+                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An</div>
+                    <div class="pub-venue">Journal of Network and Systems Management, vol. 33, no. 53, pp. 1-30, May 2025.</div>
+                </div>
+
+                <!-- Journal 3 -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">A Distributed Beam Hopping Strategy with Load Balancing and Coordinated Interference Avoidance for Heterogeneous Satellite Systems</div>
+                    <div class="pub-authors">Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b></div>
+                    <div class="pub-venue">IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025.</div>
+                </div>
+
+                <!-- Journal 4 -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Fake Path Co-Construction Source Location Privacy Protection Scheme Design for UWSNs</div>
+                    <div class="pub-authors">Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh</div>
+                    <div class="pub-venue">IEEE Transactions on Information Forensics and Security, vol. 20, pp. 9139-9150, 2025.</div>
+                </div>
+
+                <!-- Journal 5 -->
+                <div class="pub-card" data-category="journal">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-sci">SCI</span>
+                            <span class="pub-badge pub-badge-conf">Journal</span>
+                        </div>
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <div class="pub-title">WFID: Driver Identity Recognition Based on Wi-Fi Signals</div>
+                    <div class="pub-authors">Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b></div>
+                    <div class="pub-venue">IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan. 2023.</div>
+                </div>
+
+                <!-- Conf 1 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2026</span>
+                    </div>
+                    <div class="pub-title">應用於車輛訊息關聯之自動標記框架：以真實世界資料為驗證</div>
+                    <div class="pub-authors">王威翔、許為庭、<b>林致宇</b></div>
+                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2026)，台灣，台中，2026年8月.</div>
+                </div>
+
+                <!-- Conf 2 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation</div>
+                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu</div>
+                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025.</div>
+                </div>
+
+                <!-- Conf 3 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Implementing Federated Learning via IoTtalk: A Smart Home Case Study</div>
+                    <div class="pub-authors">Liyakat Ali, and <b>Chih-Yu Lin</b></div>
+                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025.</div>
+                </div>
+
+                <!-- Conf 4 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">聯邦學習架構下聚合演算法於流量分類應用中的影響</div>
+                    <div class="pub-authors">蔡震霖、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
+                </div>
+
+                <!-- Conf 5 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">樣本數及取樣方法的對於網路流量分類效能的影響</div>
+                    <div class="pub-authors">廖翊均、安立郁、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
+                </div>
+
+                <!-- Conf 6 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">FedMDFNN 模型之改進及效能分析</div>
+                    <div class="pub-authors">劉仲恒、<b>林致宇</b></div>
+                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2024)，台灣，台北，2024年8月.</div>
+                </div>
+
+                <!-- Conf 7 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">資料不平衡對網路流量分類的影響</div>
+                    <div class="pub-authors">安立郁、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十八屆行動計算研討會 (MC 2024)，台灣，台北，2024年8月.</div>
+                </div>
+
+                <!-- Conf 8 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <div class="pub-title">使用 Autoencoder 和聯邦式學習進行網路流量分類</div>
+                    <div class="pub-authors">江庭葳、曾千庭、<b>林致宇</b></div>
+                    <div class="pub-venue">第二十七屆行動計算研討會 (MC 2023)，台灣，基隆，2023年8月.</div>
+                </div>
+
+                <!-- Conf 9 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2022</span>
+                    </div>
+                    <div class="pub-title">Radar and Camera Fusion for Object Forecasting in Driving Scenarios</div>
+                    <div class="pub-authors">Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
+                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Malaysia, Dec. 2022.</div>
+                </div>
+
+                <!-- Conf 10 -->
+                <div class="pub-card" data-category="conference">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-conf">Conference</span>
+                        </div>
+                        <span class="pub-year">2021</span>
+                    </div>
+                    <div class="pub-title">Data Fusion Driven Lane-level Precision Data Transmission for V2X Road Applications</div>
+                    <div class="pub-authors">Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
+                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Singapore, Dec. 2021.</div>
+                </div>
+
+                <!-- Honors -->
+                <div class="pub-card" data-category="honors">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-honor">Honor</span>
+                        </div>
+                        <span class="pub-year">2021</span>
+                    </div>
+                    <div class="pub-title">指導學生參加 2021 中山大學 5G 實驗場域創新應用競賽，獲得創意組佳作</div>
+                    <div class="pub-authors">指導教授：<b>林致宇</b></div>
+                    <div class="pub-venue">國立中山大學 5G 智慧創新競賽</div>
+                </div>
+
+                <div class="pub-card" data-category="honors">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-honor">Honor</span>
+                        </div>
+                        <span class="pub-year">2013</span>
+                    </div>
+                    <div class="pub-title">指導學生參加 2013 電信創新應用大賽，獲得行動 App 校園組冠軍</div>
+                    <div class="pub-authors">指導教授：<b>林致宇</b></div>
+                    <div class="pub-venue">中華電信創新應用大賽</div>
+                </div>
+
+                <div class="pub-card" data-category="honors">
+                    <div class="pub-meta-row">
+                        <div class="pub-badges">
+                            <span class="pub-badge pub-badge-honor">Patent</span>
+                        </div>
+                        <span class="pub-year">Patent</span>
+                    </div>
+                    <div class="pub-title">多項智慧感測與無線網路動態頻道配置發明專利 (獲美國 USPTO、中華民國經濟部智慧財產局專利核准)</div>
+                    <div class="pub-authors">發明人包含：<b>林致宇</b> 等</div>
+                    <div class="pub-venue">美國專利 (No. 7,376,099 等)、中華民國專利 (No. I 258276 等)</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 招生與聯絡專區 Join Us & Contact -->
+        <section class="section-block" id="join-us">
+            <div class="join-card">
+                <div class="join-content">
+                    <h3><i data-lucide="sparkles" style="color:#38bdf8;"></i> 加入智慧網路實驗室 (Join SNLab)</h3>
+                    <p>
+                        智慧網路實驗室歡迎對<strong>人工智慧 (AI/ML)</strong>、<strong>網路流量分析</strong>、<strong>聯邦式學習</strong>、<strong>車聯網 (V2X)</strong> 與<strong>智慧物聯網系統實作</strong>有熱忱的碩士班新生及大學部專題生加入我們的研究團隊！
+                    </p>
+                    <ul class="join-features">
+                        <li>
+                            <i data-lucide="check-circle-2"></i>
+                            <span><strong>紮實培育</strong>：重視理論分析、演算法創新、系統實作與論文寫作能力。</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle-2"></i>
+                            <span><strong>定期討論</strong>：規律舉行研究進度討論 (1-on-1) 與論文研討會 (Seminar)。</span>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle-2"></i>
+                            <span><strong>產學接軌</strong>：積極參與頂尖學術會議發表與產學研究合作計畫。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="join-contact-box">
+                    <div class="join-contact-item">
+                        <div class="join-contact-icon">
+                            <i data-lucide="user"></i>
+                        </div>
+                        <div class="join-contact-text">
+                            <h5>指導教授 (Advisor)</h5>
+                            <p>林致宇 博士 / 副教授</p>
+                        </div>
+                    </div>
+
+                    <div class="join-contact-item">
+                        <div class="join-contact-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="join-contact-text">
+                            <h5>聯絡信箱 (Email)</h5>
+                            <p>lincyu (at) mail (dot) ntou (dot) edu (dot) tw</p>
+                        </div>
+                    </div>
+
+                    <div class="join-contact-item">
+                        <div class="join-contact-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="join-contact-text">
+                            <h5>實驗室地址 (Location)</h5>
+                            <p>基隆市中正區北寧路2號 國立臺灣海洋大學 資訊工程學系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    智慧網路實驗室 (Smart Networking Laboratory, SNLab)
+                    <div style="font-size:0.85rem;font-weight:normal;color:#94a3b8;margin-top:4px;">
+                        國立臺灣海洋大學 資訊工程學系 | 指導教授：林致宇 博士 / 副教授
+                    </div>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="#about">實驗室簡介</a></li>
+                    <li><a href="#topics">研究議題</a></li>
+                    <li><a href="#members">成員名單</a></li>
+                    <li><a href="#outcomes">研究成果</a></li>
+                    <li><a href="index.html">指導教授首頁</a></li>
+                </ul>
+
+                <button class="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <i data-lucide="arrow-up" style="width:14px;height:14px;"></i>
+                    <span>返回頂端</span>
+                </button>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    &copy; 2026 Smart Networking Laboratory (SNLab), Department of Computer Science and Engineering, National Taiwan Ocean University.
+                </div>
+                <div>
+                    E-mail: lincyu (at) mail (dot) ntou (dot) edu (dot) tw
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 互動腳本 -->
+    <script>
+        // 初始化 Lucide Icons
+        lucide.createIcons();
+
+        // 手機漢堡選單開關
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            // 點擊連結後自動關閉選單
+            document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // 研究成果分類過濾功能
+        function filterLabPubs(category) {
+            const buttons = document.querySelectorAll('.pub-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const cards = document.querySelectorAll('#labPubList .pub-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 監聽滾動事件高亮目前導覽錨點
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+
+                if (navLink) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLink.classList.add('active');
+                    } else {
+                        navLink.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
