@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="國立臺灣海洋大學 智慧網路實驗室 (Smart Networking Laboratory, SNLab) - 指導教授：林致宇 博士。研究核心：網路流量分類、聯邦式學習、車聯網與協同感知。">
-    <meta name="keywords" content="智慧網路實驗室, SNLab, Smart Networking Laboratory, 林致宇, 海洋大學, NTOU, 車聯網, 聯邦學習, 流量分類, V2X, 邊緣運算">
+    <meta name="description"
+        content="國立臺灣海洋大學 智慧網路實驗室 (Smart Networking Laboratory, SNLab) - 指導教授：林致宇 博士。研究核心：網路流量分類、聯邦式學習、車聯網與協同感知。">
+    <meta name="keywords"
+        content="智慧網路實驗室, SNLab, Smart Networking Laboratory, 林致宇, 海洋大學, NTOU, 車聯網, 聯邦學習, 流量分類, V2X, 邊緣運算">
     <meta name="author" content="Smart Networking Laboratory (SNLab)">
     <title>智慧網路實驗室 (Smart Networking Laboratory) - 國立臺灣海洋大學</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -37,10 +42,10 @@
             --radius-md: 14px;
             --radius-lg: 20px;
             --radius-full: 9999px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-            --shadow-hover: 0 20px 30px -5px rgba(37, 99, 235, 0.12), 0 8px 10px -6px rgba(0,0,0,0.04);
+            --shadow-hover: 0 20px 30px -5px rgba(37, 99, 235, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
             --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -128,7 +133,8 @@
             transition: var(--transition);
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--primary);
             background-color: var(--primary-light);
         }
@@ -191,7 +197,7 @@
             right: -120px;
             width: 360px;
             height: 360px;
-            background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -251,9 +257,20 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
+            0% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
         }
 
         .hero-content {
@@ -677,6 +694,78 @@
             line-height: 1.6;
         }
 
+        /* 畢業生清單 Alumni Table */
+        .alumni-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        .alumni-table th,
+        .alumni-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .alumni-table th {
+            background-color: var(--bg-page);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .alumni-table tr:hover {
+            background-color: var(--primary-light);
+        }
+
+        .alumni-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .alumni-name {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .alumni-date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e2e8f0;
+            color: #334155;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            font-family: 'Fira Code', monospace;
+            white-space: nowrap;
+        }
+
+        .alumni-order-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+        }
+
+        .alumni-thesis-title {
+            color: #334155;
+            font-size: 0.94rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
         /* 著作分類過濾器 Publication Filter Tabs */
         .pub-filter-nav {
             display: flex;
@@ -715,13 +804,13 @@
 
         .pub-tab-count {
             font-size: 0.75rem;
-            background: rgba(0,0,0,0.06);
+            background: rgba(0, 0, 0, 0.06);
             padding: 1px 7px;
             border-radius: var(--radius-full);
         }
 
         .pub-tab-btn.active .pub-tab-count {
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             color: white;
         }
 
@@ -814,7 +903,8 @@
             color: #475569;
         }
 
-        .pub-authors b, .pub-authors strong {
+        .pub-authors b,
+        .pub-authors strong {
             color: var(--primary);
             font-weight: 700;
         }
@@ -1008,7 +1098,10 @@
                 margin: 0 auto;
             }
 
-            .hero-titles, .hero-affiliation, .hero-contact-chips, .hero-actions {
+            .hero-titles,
+            .hero-affiliation,
+            .hero-contact-chips,
+            .hero-actions {
                 justify-content: center;
             }
 
@@ -1057,7 +1150,8 @@
                 font-size: 1.85rem;
             }
 
-            .footer-top, .footer-bottom {
+            .footer-top,
+            .footer-bottom {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -1086,7 +1180,8 @@
                 <li><a href="#members" class="nav-link">實驗室成員</a></li>
                 <li><a href="#outcomes" class="nav-link">研究成果</a></li>
                 <li><a href="#join-us" class="nav-link">招生與聯絡</a></li>
-                <li><a href="index.html" class="nav-cta"><i data-lucide="user" style="width:16px;height:16px;"></i> 指導教授首頁</a></li>
+                <li><a href="index.html" class="nav-cta"><i data-lucide="user" style="width:16px;height:16px;"></i>
+                        指導教授首頁</a></li>
             </ul>
         </div>
     </nav>
@@ -1119,7 +1214,9 @@
                     </div>
 
                     <p class="hero-bio">
-                        由<strong>林致宇 博士</strong>主持與指導。本實驗室專注於前瞻通訊網路、邊緣運算與分散式人工智慧技術之研發。研究核心圍繞於<strong>網路流量分類與智慧管理</strong>、<strong>隱私保護聯邦式學習</strong>，以及<strong>車聯網 (V2X) 與多感測器協同感知</strong>等課題，致力培育具備網路協定設計、機器學習應用與分散式系統開發能力的資訊研發人才。
+                        由<strong>林致宇
+                            博士</strong>主持與指導。本實驗室專注於前瞻通訊網路、邊緣運算與分散式人工智慧技術之研發。研究核心圍繞於<strong>網路流量分類與智慧管理</strong>、<strong>隱私保護聯邦式學習</strong>，以及<strong>車聯網
+                            (V2X) 與多感測器協同感知</strong>等課題，致力培育具備網路協定設計、機器學習應用與分散式系統開發能力的資訊研發人才。
                     </p>
 
                     <!-- AI 輔助產生註明 -->
@@ -1206,7 +1303,8 @@
                     <h3>網路流量分類 (Network Traffic Classification)</h3>
                 </div>
                 <p class="topic-desc">
-                    隨著新興應用（如影音串流、雲端運算、加密通訊協定）蓬勃發展，網路流量呈現高度動態化與加密化特徵。精準且即時的流量分類是實現軟體定義網路 (SDN) 流量工程、QoS/QoE 頻寬調配與資安防護的核心關鍵。
+                    隨著新興應用（如影音串流、雲端運算、加密通訊協定）蓬勃發展，網路流量呈現高度動態化與加密化特徵。精準且即時的流量分類是實現軟體定義網路 (SDN) 流量工程、QoS/QoE
+                    頻寬調配與資安防護的核心關鍵。
                 </p>
                 <ul class="topic-bullet-list">
                     <li><strong>特徵工程與深度學習模型</strong>：研究高效特徵萃取機制，利用 CNN、LSTM、Autoencoder 等神經網路模型分析封包時空特徵。</li>
@@ -1223,7 +1321,8 @@
                     <h3>聯邦式學習 (Federated Learning)</h3>
                 </div>
                 <p class="topic-desc">
-                    在強調個人隱私保護與邊緣運算的發展趨勢下，聯邦式學習 (Federated Learning, FL) 讓多個邊緣節點在「原始資料不出本地」的前提下進行協同模型訓練，有效降低隱私洩漏風險與頻寬傳輸負擔。
+                    在強調個人隱私保護與邊緣運算的發展趨勢下，聯邦式學習 (Federated Learning, FL)
+                    讓多個邊緣節點在「原始資料不出本地」的前提下進行協同模型訓練，有效降低隱私洩漏風險與頻寬傳輸負擔。
                 </p>
                 <ul class="topic-bullet-list">
                     <li><strong>高效率聚合演算法設計</strong>：針對邊緣設備運算能力不均與 Non-IID（非獨立同分布）數據分布，研發兼具快速收斂與抗噪能力的聚合演算法。</li>
@@ -1243,9 +1342,11 @@
                     結合車載通訊 (V2X, Vehicle-to-Everything) 與多感測器資料融合技術，突破單一車輛視野遮蔽與感知距離極限，建構高可靠度與即時性的全域環境感知體系。
                 </p>
                 <ul class="topic-bullet-list">
-                    <li><strong>多感測器資料融合 (Multi-Sensor Data Fusion)</strong>：融合車載毫米波雷達 (Radar)、光達 (LiDAR)、攝影機 (Camera) 與無線感測訊號，提升障礙物預測與自駕情境感知 (Situational Awareness)。</li>
+                    <li><strong>多感測器資料融合 (Multi-Sensor Data Fusion)</strong>：融合車載毫米波雷達 (Radar)、光達 (LiDAR)、攝影機 (Camera)
+                        與無線感測訊號，提升障礙物預測與自駕情境感知 (Situational Awareness)。</li>
                     <li><strong>車輛周遭環境自動標記法</strong>：設計自動化標註機制，加速感知模型訓練並提升辨識精確度。</li>
-                    <li><strong>車道級精準通訊與傳輸調度 (Lane-level Precision Transmission)</strong>：在密集車流環境下實現高頻寬、低碰撞的車載通訊封包調度。</li>
+                    <li><strong>車道級精準通訊與傳輸調度 (Lane-level Precision Transmission)</strong>：在密集車流環境下實現高頻寬、低碰撞的車載通訊封包調度。
+                    </li>
                     <li><strong>多感測器協同行人定位與自駕模擬</strong>：基於多感測器協同技術進行行人高精度定位，並建立 V2X 模擬驗證平台。</li>
                 </ul>
             </div>
@@ -1268,7 +1369,9 @@
                             <i data-lucide="graduation-cap"></i>
                             <span>1. 在學學生 (Current Students)</span>
                         </div>
-                        <span class="badge" style="font-size:0.8rem;background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:20px;font-weight:600;">碩士班 / 專題生</span>
+                        <span class="badge"
+                            style="font-size:0.8rem;background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:20px;font-weight:600;">碩士班
+                            / 專題生</span>
                     </div>
 
                     <div class="empty-member-box">
@@ -1279,7 +1382,8 @@
                         <p>
                             本實驗室持續招募對網路流量分類、聯邦式學習與車聯網有熱忱之<strong>碩士班研究生</strong>及<strong>大學部專題生</strong>，歡迎聯繫林致宇老師洽談加入！
                         </p>
-                        <a href="#join-us" class="btn btn-primary" style="margin-top:8px;padding:8px 18px;font-size:0.86rem;">
+                        <a href="#join-us" class="btn btn-primary"
+                            style="margin-top:8px;padding:8px 18px;font-size:0.86rem;">
                             <i data-lucide="mail" style="width:14px;height:14px;"></i> 申請加入實驗室
                         </a>
                     </div>
@@ -1292,17 +1396,78 @@
                             <i data-lucide="award"></i>
                             <span>2. 畢業生 (Alumni)</span>
                         </div>
-                        <span class="badge" style="font-size:0.8rem;background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:20px;font-weight:600;">歷屆校友</span>
+                        <span class="badge"
+                            style="font-size:0.8rem;background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:20px;font-weight:600;">歷屆校友
+                            (共 8 位)</span>
                     </div>
 
-                    <div class="empty-member-box">
-                        <div class="empty-member-icon">
-                            <i data-lucide="briefcase" style="width:24px;height:24px;"></i>
-                        </div>
-                        <h4>畢業生成員名單更新中</h4>
-                        <p>
-                            歷屆碩士畢業生與校友名冊整理中。本實驗室畢業生廣泛任職於國內外知名科技企業與頂尖研發團隊。
-                        </p>
+                    <div style="overflow-x: auto;">
+                        <table class="alumni-table">
+                            <thead>
+                                <tr>
+                                    <th width="10%">序號</th>
+                                    <th width="24%">畢業生姓名</th>
+                                    <th width="66%">畢業論文題目 (Master's Thesis)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="alumni-order-badge">1</span></td>
+                                    <td><span class="alumni-name">Liyakat Ali</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/g8r752">A GUI Based Federated
+                                                Learning Framework: Implementation and Applications</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">2</span></td>
+                                    <td><span class="alumni-name">安立郁</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/z9mtzn">資料不平衡環境下資料擴增法的效能分析：以流量分類為例</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">3</span></td>
+                                    <td><span class="alumni-name">吳浣妘</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/9949yz">基於車對車一次性去中心化聯邦學習之車輛周遭環境感知系統設計</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">4</span></td>
+                                    <td><span class="alumni-name">廖翊均</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="廖翊均">利用具名目特徵感知之叢集式資料擴增方法改善網路流量分類中的資料不平衡問題</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">5</span></td>
+                                    <td><span class="alumni-name">江庭葳</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/g6689d">多車輛協同感知用於行人偵測</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">6</span></td>
+                                    <td><span class="alumni-name">曾千庭</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/pk56wg">使用聯邦半監督式學習進行網路流量分類</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">7</span></td>
+                                    <td><span class="alumni-name">梁晉維</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/8k8g58">使用聯邦式學習與自動標記技術實現車輛周遭環境感知</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="alumni-order-badge">8</span></td>
+                                    <td><span class="alumni-name">黃弘毅</span></td>
+                                    <td><span class="alumni-thesis-title"><a
+                                                href="https://hdl.handle.net/11296/3w7k3c">軟體定義網路中一個以流量分類為基礎的流量工程方法</a></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -1319,10 +1484,14 @@
 
             <!-- 分類切換按鈕 Tabs -->
             <div class="pub-filter-nav">
-                <button class="pub-tab-btn active" onclick="filterLabPubs('all')">全部成果 <span class="pub-tab-count">All</span></button>
-                <button class="pub-tab-btn" onclick="filterLabPubs('journal')">期刊論文 (Journal) <span class="pub-tab-count">5</span></button>
-                <button class="pub-tab-btn" onclick="filterLabPubs('conference')">研討會論文 (Conference) <span class="pub-tab-count">10</span></button>
-                <button class="pub-tab-btn" onclick="filterLabPubs('honors')">專利與榮譽 (Honors) <span class="pub-tab-count">3</span></button>
+                <button class="pub-tab-btn active" onclick="filterLabPubs('all')">全部成果 <span
+                        class="pub-tab-count">All</span></button>
+                <button class="pub-tab-btn" onclick="filterLabPubs('journal')">期刊論文 (Journal) <span
+                        class="pub-tab-count">5</span></button>
+                <button class="pub-tab-btn" onclick="filterLabPubs('conference')">研討會論文 (Conference) <span
+                        class="pub-tab-count">10</span></button>
+                <button class="pub-tab-btn" onclick="filterLabPubs('honors')">專利與榮譽 (Honors) <span
+                        class="pub-tab-count">3</span></button>
             </div>
 
             <!-- 成果卡片清單 -->
@@ -1338,9 +1507,11 @@
                         </div>
                         <span class="pub-year">2026</span>
                     </div>
-                    <div class="pub-title">A Traffic Classification-based Traffic Engineering Framework in Software-Defined Networking</div>
+                    <div class="pub-title">A Traffic Classification-based Traffic Engineering Framework in
+                        Software-Defined Networking</div>
                     <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang</div>
-                    <div class="pub-venue">International Journal of Communication Networks and Distributed Systems, vol. 32, no. 1, pp. 33–57, 2026.</div>
+                    <div class="pub-venue">International Journal of Communication Networks and Distributed Systems, vol.
+                        32, no. 1, pp. 33–57, 2026.</div>
                 </div>
 
                 <!-- Journal 2 -->
@@ -1352,9 +1523,11 @@
                         </div>
                         <span class="pub-year">2025</span>
                     </div>
-                    <div class="pub-title">Employing Federated Semi-Supervised Learning for Network Traffic Classification</div>
+                    <div class="pub-title">Employing Federated Semi-Supervised Learning for Network Traffic
+                        Classification</div>
                     <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An</div>
-                    <div class="pub-venue">Journal of Network and Systems Management, vol. 33, no. 53, pp. 1-30, May 2025.</div>
+                    <div class="pub-venue">Journal of Network and Systems Management, vol. 33, no. 53, pp. 1-30, May
+                        2025.</div>
                 </div>
 
                 <!-- Journal 3 -->
@@ -1366,9 +1539,11 @@
                         </div>
                         <span class="pub-year">2025</span>
                     </div>
-                    <div class="pub-title">A Distributed Beam Hopping Strategy with Load Balancing and Coordinated Interference Avoidance for Heterogeneous Satellite Systems</div>
+                    <div class="pub-title">A Distributed Beam Hopping Strategy with Load Balancing and Coordinated
+                        Interference Avoidance for Heterogeneous Satellite Systems</div>
                     <div class="pub-authors">Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025.</div>
+                    <div class="pub-venue">IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025.
+                    </div>
                 </div>
 
                 <!-- Journal 4 -->
@@ -1380,9 +1555,11 @@
                         </div>
                         <span class="pub-year">2025</span>
                     </div>
-                    <div class="pub-title">Fake Path Co-Construction Source Location Privacy Protection Scheme Design for UWSNs</div>
+                    <div class="pub-title">Fake Path Co-Construction Source Location Privacy Protection Scheme Design
+                        for UWSNs</div>
                     <div class="pub-authors">Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh</div>
-                    <div class="pub-venue">IEEE Transactions on Information Forensics and Security, vol. 20, pp. 9139-9150, 2025.</div>
+                    <div class="pub-venue">IEEE Transactions on Information Forensics and Security, vol. 20, pp.
+                        9139-9150, 2025.</div>
                 </div>
 
                 <!-- Journal 5 -->
@@ -1396,7 +1573,8 @@
                     </div>
                     <div class="pub-title">WFID: Driver Identity Recognition Based on Wi-Fi Signals</div>
                     <div class="pub-authors">Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b></div>
-                    <div class="pub-venue">IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan. 2023.</div>
+                    <div class="pub-venue">IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan.
+                        2023.</div>
                 </div>
 
                 <!-- Conf 1 -->
@@ -1420,9 +1598,11 @@
                         </div>
                         <span class="pub-year">2025</span>
                     </div>
-                    <div class="pub-title">A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation</div>
+                    <div class="pub-title">A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation
+                    </div>
                     <div class="pub-authors"><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu</div>
-                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025.</div>
+                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo,
+                        Japan, 2025.</div>
                 </div>
 
                 <!-- Conf 3 -->
@@ -1435,7 +1615,8 @@
                     </div>
                     <div class="pub-title">Implementing Federated Learning via IoTtalk: A Smart Home Case Study</div>
                     <div class="pub-authors">Liyakat Ali, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025.</div>
+                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo,
+                        Japan, 2025.</div>
                 </div>
 
                 <!-- Conf 4 -->
@@ -1512,8 +1693,10 @@
                         <span class="pub-year">2022</span>
                     </div>
                     <div class="pub-title">Radar and Camera Fusion for Object Forecasting in Driving Scenarios</div>
-                    <div class="pub-authors">Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
-                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Malaysia, Dec. 2022.</div>
+                    <div class="pub-authors">Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and
+                        Yu-Chee Tseng</div>
+                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip
+                        (MCSoC), Malaysia, Dec. 2022.</div>
                 </div>
 
                 <!-- Conf 10 -->
@@ -1524,9 +1707,12 @@
                         </div>
                         <span class="pub-year">2021</span>
                     </div>
-                    <div class="pub-title">Data Fusion Driven Lane-level Precision Data Transmission for V2X Road Applications</div>
-                    <div class="pub-authors">Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
-                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Singapore, Dec. 2021.</div>
+                    <div class="pub-title">Data Fusion Driven Lane-level Precision Data Transmission for V2X Road
+                        Applications</div>
+                    <div class="pub-authors">Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng
+                    </div>
+                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip
+                        (MCSoC), Singapore, Dec. 2021.</div>
                 </div>
 
                 <!-- Honors -->
@@ -1575,7 +1761,9 @@
                 <div class="join-content">
                     <h3><i data-lucide="sparkles" style="color:#38bdf8;"></i> 加入智慧網路實驗室 (Join SNLab)</h3>
                     <p>
-                        智慧網路實驗室歡迎對<strong>人工智慧 (AI/ML)</strong>、<strong>網路流量分析</strong>、<strong>聯邦式學習</strong>、<strong>車聯網 (V2X)</strong> 與<strong>智慧物聯網系統實作</strong>有熱忱的碩士班新生及大學部專題生加入我們的研究團隊！
+                        智慧網路實驗室歡迎對<strong>人工智慧
+                            (AI/ML)</strong>、<strong>網路流量分析</strong>、<strong>聯邦式學習</strong>、<strong>車聯網 (V2X)</strong>
+                        與<strong>智慧物聯網系統實作</strong>有熱忱的碩士班新生及大學部專題生加入我們的研究團隊！
                     </p>
                     <ul class="join-features">
                         <li>
@@ -1656,7 +1844,8 @@
 
             <div class="footer-bottom">
                 <div>
-                    &copy; 2026 Smart Networking Laboratory (SNLab), Department of Computer Science and Engineering, National Taiwan Ocean University.
+                    &copy; 2026 Smart Networking Laboratory (SNLab), Department of Computer Science and Engineering,
+                    National Taiwan Ocean University.
                 </div>
                 <div>
                     E-mail: lincyu (at) mail (dot) ntou (dot) edu (dot) tw
@@ -1723,4 +1912,5 @@
         });
     </script>
 </body>
+
 </html>
