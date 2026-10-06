@@ -766,154 +766,6 @@
             font-weight: 500;
         }
 
-        /* 著作分類過濾器 Publication Filter Tabs */
-        .pub-filter-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .pub-tab-btn {
-            background: white;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 8px 18px;
-            border-radius: var(--radius-full);
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pub-tab-btn:hover {
-            color: var(--primary);
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .pub-tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
-        }
-
-        .pub-tab-count {
-            font-size: 0.75rem;
-            background: rgba(0, 0, 0, 0.06);
-            padding: 1px 7px;
-            border-radius: var(--radius-full);
-        }
-
-        .pub-tab-btn.active .pub-tab-count {
-            background: rgba(255, 255, 255, 0.25);
-            color: white;
-        }
-
-        /* 著作卡片清單 Publication Items */
-        .pub-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .pub-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 20px 24px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .pub-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(37, 99, 235, 0.35);
-        }
-
-        .pub-meta-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .pub-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .pub-badge {
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .pub-badge-sci {
-            background: #dcfce7;
-            color: #15803d;
-            border: 1px solid #bbf7d0;
-        }
-
-        .pub-badge-ei {
-            background: #e0e7ff;
-            color: #4338ca;
-            border: 1px solid #c7d2fe;
-        }
-
-        .pub-badge-conf {
-            background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #e2e8f0;
-        }
-
-        .pub-badge-honor {
-            background: #fef3c7;
-            color: #b45309;
-            border: 1px solid #fde68a;
-        }
-
-        .pub-year {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            font-family: 'Fira Code', monospace;
-        }
-
-        .pub-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--dark);
-            line-height: 1.45;
-        }
-
-        .pub-authors {
-            font-size: 0.9rem;
-            color: #475569;
-        }
-
-        .pub-authors b,
-        .pub-authors strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .pub-venue {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
 
         /* 招生與聯絡專區 Join Us & Contact */
         .join-card {
@@ -1177,8 +1029,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about" class="nav-link">實驗室簡介</a></li>
                 <li><a href="#topics" class="nav-link">研究議題</a></li>
+                <li><a href="#projects" class="nav-link">歷屆大學部專題</a></li>
                 <li><a href="#members" class="nav-link">實驗室成員</a></li>
-                <li><a href="#outcomes" class="nav-link">研究成果</a></li>
                 <li><a href="#join-us" class="nav-link">招生與聯絡</a></li>
                 <li><a href="index.html" class="nav-cta"><i data-lucide="user" style="width:16px;height:16px;"></i>
                         指導教授首頁</a></li>
@@ -1241,9 +1093,9 @@
                             <i data-lucide="compass" style="width:18px;height:18px;"></i>
                             <span>瀏覽研究議題</span>
                         </a>
-                        <a href="#outcomes" class="btn btn-secondary">
-                            <i data-lucide="award" style="width:18px;height:18px;"></i>
-                            <span>實驗室研究成果</span>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i data-lucide="folder-kanban" style="width:18px;height:18px;"></i>
+                            <span>歷屆大學部專題</span>
                         </a>
                         <a href="index.html" class="btn btn-secondary">
                             <i data-lucide="arrow-left" style="width:18px;height:18px;"></i>
@@ -1349,6 +1201,62 @@
                     </li>
                     <li><strong>多感測器協同行人定位與自駕模擬</strong>：基於多感測器協同技術進行行人高精度定位，並建立 V2X 模擬驗證平台。</li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- 歷屆大學部專題 Undergraduate Projects -->
+        <section class="section-block" id="projects">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title"><i data-lucide="folder-kanban"></i> 歷屆大學部專題 (Undergraduate Projects)</h2>
+                    <span class="section-subtitle">Undergraduate Senior Capstone Projects</span>
+                </div>
+            </div>
+
+            <div class="member-category-card">
+                <div style="overflow-x: auto;">
+                    <table class="alumni-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%; min-width: 100px;">年份</th>
+                                <th style="width: 55%; min-width: 250px;">題目</th>
+                                <th style="width: 30%; min-width: 150px;">成員</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="alumni-date-badge">2026</span></td>
+                                <td><span class="alumni-thesis-title">基於生成式模型之 CARLA 模擬影像真實化方法及其於車輛訊息關聯之應用</span></td>
+                                <td><span class="alumni-name">薛靖暘等</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="alumni-date-badge">2025</span></td>
+                                <td><span class="alumni-thesis-title">Web of Science 智慧研究分析平台以「聯邦式學習」為主題</span></td>
+                                <td><span class="alumni-name">蔡秉杰等</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="alumni-date-badge">2025</span></td>
+                                <td><span class="alumni-thesis-title">Llama 模型微調效能探討：巢狀迴圈程式案例分析</span></td>
+                                <td><span class="alumni-name">陳高陸等</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="alumni-date-badge">2024</span></td>
+                                <td><span class="alumni-thesis-title">使用WoS數據進行研究趨勢分析</span></td>
+                                <td><span class="alumni-name">沈奎勳等</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="alumni-date-badge">2023</span></td>
+                                <td><span class="alumni-thesis-title">使用聯邦式學習進行網路流量分類</span></td>
+                                <td><span class="alumni-name">林暐傑等</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="alumni-date-badge">2022</span></td>
+                                <td><span class="alumni-thesis-title">以自然語言處理技術判斷新聞事件發生地</span></td>
+                                <td><span class="alumni-name">張宏洋等</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -1473,287 +1381,6 @@
             </div>
         </section>
 
-        <!-- 研究成果 Outcomes -->
-        <section class="section-block" id="outcomes">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title"><i data-lucide="book-marked"></i> 代表性研究成果 (Research Outcomes)</h2>
-                    <span class="section-subtitle">Selected Publications, Projects & Honors</span>
-                </div>
-            </div>
-
-            <!-- 分類切換按鈕 Tabs -->
-            <div class="pub-filter-nav">
-                <button class="pub-tab-btn active" onclick="filterLabPubs('all')">全部成果 <span
-                        class="pub-tab-count">All</span></button>
-                <button class="pub-tab-btn" onclick="filterLabPubs('journal')">期刊論文 (Journal) <span
-                        class="pub-tab-count">5</span></button>
-                <button class="pub-tab-btn" onclick="filterLabPubs('conference')">研討會論文 (Conference) <span
-                        class="pub-tab-count">10</span></button>
-                <button class="pub-tab-btn" onclick="filterLabPubs('honors')">專利與榮譽 (Honors) <span
-                        class="pub-tab-count">3</span></button>
-            </div>
-
-            <!-- 成果卡片清單 -->
-            <div class="pub-list" id="labPubList">
-
-                <!-- Journal 1 -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">ESCI</span>
-                            <span class="pub-badge pub-badge-ei">EI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2026</span>
-                    </div>
-                    <div class="pub-title">A Traffic Classification-based Traffic Engineering Framework in
-                        Software-Defined Networking</div>
-                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang</div>
-                    <div class="pub-venue">International Journal of Communication Networks and Distributed Systems, vol.
-                        32, no. 1, pp. 33–57, 2026.</div>
-                </div>
-
-                <!-- Journal 2 -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">Employing Federated Semi-Supervised Learning for Network Traffic
-                        Classification</div>
-                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An</div>
-                    <div class="pub-venue">Journal of Network and Systems Management, vol. 33, no. 53, pp. 1-30, May
-                        2025.</div>
-                </div>
-
-                <!-- Journal 3 -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">A Distributed Beam Hopping Strategy with Load Balancing and Coordinated
-                        Interference Avoidance for Heterogeneous Satellite Systems</div>
-                    <div class="pub-authors">Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025.
-                    </div>
-                </div>
-
-                <!-- Journal 4 -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">Fake Path Co-Construction Source Location Privacy Protection Scheme Design
-                        for UWSNs</div>
-                    <div class="pub-authors">Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh</div>
-                    <div class="pub-venue">IEEE Transactions on Information Forensics and Security, vol. 20, pp.
-                        9139-9150, 2025.</div>
-                </div>
-
-                <!-- Journal 5 -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2023</span>
-                    </div>
-                    <div class="pub-title">WFID: Driver Identity Recognition Based on Wi-Fi Signals</div>
-                    <div class="pub-authors">Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b></div>
-                    <div class="pub-venue">IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan.
-                        2023.</div>
-                </div>
-
-                <!-- Conf 1 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2026</span>
-                    </div>
-                    <div class="pub-title">應用於車輛訊息關聯之自動標記框架：以真實世界資料為驗證</div>
-                    <div class="pub-authors">王威翔、許為庭、<b>林致宇</b></div>
-                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2026)，台灣，台中，2026年8月.</div>
-                </div>
-
-                <!-- Conf 2 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation
-                    </div>
-                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu</div>
-                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo,
-                        Japan, 2025.</div>
-                </div>
-
-                <!-- Conf 3 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">Implementing Federated Learning via IoTtalk: A Smart Home Case Study</div>
-                    <div class="pub-authors">Liyakat Ali, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo,
-                        Japan, 2025.</div>
-                </div>
-
-                <!-- Conf 4 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">聯邦學習架構下聚合演算法於流量分類應用中的影響</div>
-                    <div class="pub-authors">蔡震霖、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
-                </div>
-
-                <!-- Conf 5 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">樣本數及取樣方法的對於網路流量分類效能的影響</div>
-                    <div class="pub-authors">廖翊均、安立郁、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
-                </div>
-
-                <!-- Conf 6 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2024</span>
-                    </div>
-                    <div class="pub-title">FedMDFNN 模型之改進及效能分析</div>
-                    <div class="pub-authors">劉仲恒、<b>林致宇</b></div>
-                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2024)，台灣，台北，2024年8月.</div>
-                </div>
-
-                <!-- Conf 7 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2024</span>
-                    </div>
-                    <div class="pub-title">資料不平衡對網路流量分類的影響</div>
-                    <div class="pub-authors">安立郁、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十八屆行動計算研討會 (MC 2024)，台灣，台北，2024年8月.</div>
-                </div>
-
-                <!-- Conf 8 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2023</span>
-                    </div>
-                    <div class="pub-title">使用 Autoencoder 和聯邦式學習進行網路流量分類</div>
-                    <div class="pub-authors">江庭葳、曾千庭、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十七屆行動計算研討會 (MC 2023)，台灣，基隆，2023年8月.</div>
-                </div>
-
-                <!-- Conf 9 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2022</span>
-                    </div>
-                    <div class="pub-title">Radar and Camera Fusion for Object Forecasting in Driving Scenarios</div>
-                    <div class="pub-authors">Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and
-                        Yu-Chee Tseng</div>
-                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip
-                        (MCSoC), Malaysia, Dec. 2022.</div>
-                </div>
-
-                <!-- Conf 10 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2021</span>
-                    </div>
-                    <div class="pub-title">Data Fusion Driven Lane-level Precision Data Transmission for V2X Road
-                        Applications</div>
-                    <div class="pub-authors">Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng
-                    </div>
-                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip
-                        (MCSoC), Singapore, Dec. 2021.</div>
-                </div>
-
-                <!-- Honors -->
-                <div class="pub-card" data-category="honors">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-honor">Honor</span>
-                        </div>
-                        <span class="pub-year">2021</span>
-                    </div>
-                    <div class="pub-title">指導學生參加 2021 中山大學 5G 實驗場域創新應用競賽，獲得創意組佳作</div>
-                    <div class="pub-authors">指導教授：<b>林致宇</b></div>
-                    <div class="pub-venue">國立中山大學 5G 智慧創新競賽</div>
-                </div>
-
-                <div class="pub-card" data-category="honors">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-honor">Honor</span>
-                        </div>
-                        <span class="pub-year">2013</span>
-                    </div>
-                    <div class="pub-title">指導學生參加 2013 電信創新應用大賽，獲得行動 App 校園組冠軍</div>
-                    <div class="pub-authors">指導教授：<b>林致宇</b></div>
-                    <div class="pub-venue">中華電信創新應用大賽</div>
-                </div>
-
-                <div class="pub-card" data-category="honors">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-honor">Patent</span>
-                        </div>
-                        <span class="pub-year">Patent</span>
-                    </div>
-                    <div class="pub-title">多項智慧感測與無線網路動態頻道配置發明專利 (獲美國 USPTO、中華民國經濟部智慧財產局專利核准)</div>
-                    <div class="pub-authors">發明人包含：<b>林致宇</b> 等</div>
-                    <div class="pub-venue">美國專利 (No. 7,376,099 等)、中華民國專利 (No. I 258276 等)</div>
-                </div>
-
-            </div>
-        </section>
 
         <!-- 招生與聯絡專區 Join Us & Contact -->
         <section class="section-block" id="join-us">
@@ -1772,7 +1399,7 @@
                         </li>
                         <li>
                             <i data-lucide="check-circle-2"></i>
-                            <span><strong>定期討論</strong>：規律舉行研究進度討論 (1-on-1) 與論文研討會 (Seminar)。</span>
+                            <span><strong>定期討論</strong>：規律舉行研究進度討論 (Meeting) 與論文研討會 (Seminar)。</span>
                         </li>
                         <li>
                             <i data-lucide="check-circle-2"></i>
@@ -1831,8 +1458,8 @@
                 <ul class="footer-links">
                     <li><a href="#about">實驗室簡介</a></li>
                     <li><a href="#topics">研究議題</a></li>
+                    <li><a href="#projects">歷屆大學部專題</a></li>
                     <li><a href="#members">成員名單</a></li>
-                    <li><a href="#outcomes">研究成果</a></li>
                     <li><a href="index.html">指導教授首頁</a></li>
                 </ul>
 
@@ -1874,21 +1501,6 @@
             });
         }
 
-        // 研究成果分類過濾功能
-        function filterLabPubs(category) {
-            const buttons = document.querySelectorAll('.pub-tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-
-            const cards = document.querySelectorAll('#labPubList .pub-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
 
         // 監聽滾動事件高亮目前導覽錨點
         window.addEventListener('scroll', () => {
