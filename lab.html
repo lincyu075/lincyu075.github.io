@@ -23,29 +23,30 @@
 
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --primary-light: #eff6ff;
-            --primary-glow: rgba(37, 99, 235, 0.15);
-            --accent: #0284c7;
-            --accent-cyan: #06b6d4;
-            --dark: #0f172a;
-            --dark-surface: #1e293b;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --text-light: #94a3b8;
-            --bg-page: #f8fafc;
+            --primary: #d83a6f;
+            --primary-hover: #be185d;
+            --primary-light: #fff0f3;
+            --primary-glow: rgba(216, 58, 111, 0.18);
+            --accent: #f472b6;
+            --accent-soft: #fbcfe8;
+            --accent-rose: #fb7185;
+            --dark: #2a1625;
+            --dark-surface: #3b1e34;
+            --text-main: #2e1828;
+            --text-muted: #795d70;
+            --text-light: #a6899b;
+            --bg-page: #fff5f7;
             --bg-card: #ffffff;
-            --border-color: #e2e8f0;
-            --border-light: #f1f5f9;
+            --border-color: #fcd5e2;
+            --border-light: #fde8ee;
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 20px;
             --radius-full: 9999px;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-            --shadow-hover: 0 20px 30px -5px rgba(37, 99, 235, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-sm: 0 1px 3px rgba(180, 50, 90, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 10px -1px rgba(216, 58, 111, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 25px -3px rgba(42, 22, 37, 0.08), 0 4px 6px -4px rgba(216, 58, 111, 0.05);
+            --shadow-hover: 0 20px 30px -5px rgba(216, 58, 111, 0.18), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
             --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -63,6 +64,11 @@
         body {
             font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-page);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(254, 205, 220, 0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 10%, rgba(251, 207, 232, 0.35) 0px, transparent 40%),
+                radial-gradient(at 50% 100%, rgba(255, 228, 237, 0.45) 0px, transparent 60%);
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
@@ -76,10 +82,10 @@
             left: 0;
             right: 0;
             height: 72px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 245, 247, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(252, 213, 226, 0.85);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -143,21 +149,21 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: linear-gradient(135deg, #1e40af, #2563eb);
+            background: linear-gradient(135deg, #d83a6f, #f43f5e);
             color: white !important;
             padding: 8px 16px;
             border-radius: var(--radius-full);
             font-weight: 600;
             font-size: 0.88rem;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 2px 10px rgba(216, 58, 111, 0.3);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .nav-cta:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
-            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            box-shadow: 0 4px 14px rgba(216, 58, 111, 0.45);
+            background: linear-gradient(135deg, #be185d, #e11d48);
         }
 
         /* 手機版選單切換按鈕 */
@@ -180,7 +186,7 @@
 
         /* Hero 區塊 */
         .hero-section {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #eff6ff 100%);
+            background: linear-gradient(145deg, #ffffff 0%, #fff0f5 50%, #fde8ee 100%);
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
             padding: 48px 40px;
@@ -197,7 +203,7 @@
             right: -120px;
             width: 360px;
             height: 360px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.16) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -239,11 +245,11 @@
             border-radius: var(--radius-full);
             font-size: 0.78rem;
             font-weight: 600;
-            color: #2563eb;
+            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 6px;
-            border: 1px solid #bfdbfe;
+            border: 1px solid #fbcfe8;
             box-shadow: var(--shadow-sm);
             white-space: nowrap;
         }
@@ -251,7 +257,7 @@
         .status-dot {
             width: 8px;
             height: 8px;
-            background-color: #2563eb;
+            background-color: var(--primary);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -309,7 +315,7 @@
             font-size: 0.85rem;
             padding: 4px 12px;
             border-radius: var(--radius-full);
-            border: 1px solid rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(216, 58, 111, 0.2);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -328,7 +334,7 @@
         }
 
         .hero-bio {
-            color: #475569;
+            color: #4a3344;
             font-size: 0.98rem;
             line-height: 1.75;
         }
@@ -338,18 +344,18 @@
             align-items: center;
             gap: 8px;
             background: #ffffff;
-            border: 1px dashed #cbd5e1;
+            border: 1px dashed #f9c2d1;
             border-radius: var(--radius-sm);
             padding: 7px 14px;
             font-size: 0.82rem;
-            color: #64748b;
+            color: #795d70;
             line-height: 1.5;
             width: fit-content;
             box-shadow: var(--shadow-sm);
         }
 
         .ai-disclaimer-note i {
-            color: #6366f1;
+            color: var(--primary);
             flex-shrink: 0;
         }
 
@@ -405,13 +411,13 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 4px 10px rgba(216, 58, 111, 0.25);
         }
 
         .btn-primary:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 6px 16px rgba(216, 58, 111, 0.35);
         }
 
         .btn-secondary {
@@ -453,7 +459,7 @@
         .stat-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
-            border-color: rgba(37, 99, 235, 0.3);
+            border-color: rgba(216, 58, 111, 0.3);
         }
 
         .stat-card::after {
@@ -549,7 +555,7 @@
         }
 
         .topic-detail-card:hover {
-            border-color: rgba(37, 99, 235, 0.3);
+            border-color: rgba(216, 58, 111, 0.3);
             box-shadow: var(--shadow-md);
             transform: translateY(-2px);
         }
@@ -657,8 +663,8 @@
 
         /* 成員空白/更新中狀態 Empty State Card */
         .empty-member-box {
-            background: #f8fafc;
-            border: 2px dashed #cbd5e1;
+            background: #fff5f7;
+            border: 2px dashed #f9c2d1;
             border-radius: var(--radius-md);
             padding: 36px 24px;
             text-align: center;
@@ -673,8 +679,8 @@
             width: 52px;
             height: 52px;
             border-radius: 50%;
-            background: #e2e8f0;
-            color: #64748b;
+            background: #fce7f3;
+            color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -735,8 +741,8 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #e2e8f0;
-            color: #334155;
+            background: #fbe6ed;
+            color: #553448;
             font-size: 0.82rem;
             font-weight: 700;
             padding: 4px 10px;
@@ -769,14 +775,14 @@
 
         /* 招生與聯絡專區 Join Us & Contact */
         .join-card {
-            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(145deg, #2a1423 0%, #441736 60%, #681d48 100%);
             border-radius: var(--radius-lg);
             padding: 40px;
             color: white;
             display: grid;
             grid-template-columns: 1.2fr 1fr;
             gap: 36px;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 12px 30px rgba(42, 20, 35, 0.25);
         }
 
         .join-content h3 {
@@ -789,7 +795,7 @@
         }
 
         .join-content p {
-            color: #cbd5e1;
+            color: #fce7f3;
             font-size: 0.95rem;
             line-height: 1.75;
             margin-bottom: 20px;
@@ -807,18 +813,18 @@
             align-items: flex-start;
             gap: 10px;
             font-size: 0.9rem;
-            color: #e2e8f0;
+            color: #fde8ee;
         }
 
         .join-features i {
-            color: #38bdf8;
+            color: #f472b6;
             flex-shrink: 0;
             margin-top: 3px;
         }
 
         .join-contact-box {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 214, 226, 0.2);
             border-radius: var(--radius-md);
             padding: 24px;
             display: flex;
@@ -837,8 +843,8 @@
             width: 36px;
             height: 36px;
             border-radius: var(--radius-sm);
-            background: rgba(37, 99, 235, 0.25);
-            color: #60a5fa;
+            background: rgba(244, 114, 182, 0.2);
+            color: #fbcfe8;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -847,7 +853,7 @@
 
         .join-contact-text h5 {
             font-size: 0.85rem;
-            color: #94a3b8;
+            color: #fbcfe8;
             font-weight: 500;
         }
 
@@ -860,11 +866,11 @@
 
         /* 頁尾 Footer */
         .footer {
-            background: #0f172a;
-            color: #94a3b8;
+            background: #1e111a;
+            color: #a8949f;
             padding: 48px 24px 36px;
             margin-top: 60px;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid #331d2c;
         }
 
         .footer-container {
@@ -882,7 +888,7 @@
             flex-wrap: wrap;
             gap: 20px;
             padding-bottom: 24px;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid #331d2c;
         }
 
         .footer-brand {
@@ -899,7 +905,7 @@
         }
 
         .footer-links a {
-            color: #94a3b8;
+            color: #c7b0be;
             text-decoration: none;
             font-size: 0.88rem;
             transition: var(--transition);
@@ -919,9 +925,9 @@
         }
 
         .back-to-top-btn {
-            background: #1e293b;
-            color: #e2e8f0;
-            border: 1px solid #334155;
+            background: #2d1827;
+            color: #fce7f3;
+            border: 1px solid #4a2840;
             padding: 8px 14px;
             border-radius: var(--radius-sm);
             font-size: 0.82rem;
@@ -936,6 +942,47 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+        }
+
+        /* 櫻花花瓣飄落微動畫 Sakura Petal Animation */
+        .sakura-petals-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .sakura-petal {
+            position: absolute;
+            top: -40px;
+            background: linear-gradient(135deg, #ffc5d3 0%, #ffaec3 50%, #f472b6 100%);
+            border-radius: 12px 1px 12px 1px;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 4px rgba(216, 58, 111, 0.15));
+            animation: sakura-fall linear infinite, sakura-sway ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        @keyframes sakura-fall {
+            0% {
+                top: -40px;
+            }
+            100% {
+                top: 105vh;
+            }
+        }
+
+        @keyframes sakura-sway {
+            0%, 100% {
+                transform: rotate(0deg) translateX(0) rotateX(0deg);
+            }
+            50% {
+                transform: rotate(45deg) translateX(30px) rotateX(45deg);
+            }
         }
 
         /* 響應式佈局 RWD */
@@ -1278,7 +1325,7 @@
                             <span>1. 在學學生 (Current Students)</span>
                         </div>
                         <span class="badge"
-                            style="font-size:0.8rem;background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:20px;font-weight:600;">碩士班
+                            style="font-size:0.8rem;background:#fce7f3;color:#be185d;padding:4px 10px;border-radius:20px;font-weight:600;">碩士班
                             / 專題生</span>
                     </div>
 
@@ -1305,7 +1352,7 @@
                             <span>2. 畢業生 (Alumni)</span>
                         </div>
                         <span class="badge"
-                            style="font-size:0.8rem;background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:20px;font-weight:600;">歷屆校友
+                            style="font-size:0.8rem;background:#fdf2f8;color:#795d70;padding:4px 10px;border-radius:20px;font-weight:600;">歷屆校友
                             (共 8 位)</span>
                     </div>
 
@@ -1386,7 +1433,7 @@
         <section class="section-block" id="join-us">
             <div class="join-card">
                 <div class="join-content">
-                    <h3><i data-lucide="sparkles" style="color:#38bdf8;"></i> 加入智慧網路實驗室 (Join SNLab)</h3>
+                    <h3><i data-lucide="sparkles" style="color:#f472b6;"></i> 加入智慧網路實驗室 (Join SNLab)</h3>
                     <p>
                         智慧網路實驗室歡迎對<strong>人工智慧
                             (AI/ML)</strong>、<strong>網路流量分析</strong>、<strong>聯邦式學習</strong>、<strong>車聯網 (V2X)</strong>
@@ -1450,7 +1497,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     智慧網路實驗室 (Smart Networking Laboratory, SNLab)
-                    <div style="font-size:0.85rem;font-weight:normal;color:#94a3b8;margin-top:4px;">
+                    <div style="font-size:0.85rem;font-weight:normal;color:#c7b0be;margin-top:4px;">
                         國立臺灣海洋大學 資訊工程學系 | 指導教授：林致宇 博士 / 副教授
                     </div>
                 </div>
@@ -1522,6 +1569,36 @@
                 }
             });
         });
+
+        // 櫻花花瓣飄落效果 (Sakura Petals Effect)
+        function createSakuraPetals() {
+            const petalsContainer = document.createElement('div');
+            petalsContainer.className = 'sakura-petals-layer';
+            petalsContainer.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(petalsContainer);
+
+            const petalCount = 18;
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'sakura-petal';
+                
+                const size = Math.random() * 8 + 10;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 6 + 7;
+                const delay = Math.random() * 10;
+                const swayDuration = Math.random() * 2 + 3;
+                
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size * 1.3}px`;
+                petal.style.left = `${left}%`;
+                petal.style.animationDuration = `${duration}s, ${swayDuration}s`;
+                petal.style.animationDelay = `${delay}s, ${delay}s`;
+                petal.style.opacity = (Math.random() * 0.4 + 0.35).toFixed(2);
+                
+                petalsContainer.appendChild(petal);
+            }
+        }
+        createSakuraPetals();
     </script>
 </body>
 
