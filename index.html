@@ -846,127 +846,92 @@
             color: white;
         }
 
-        /* 著作項目清單 Publication Items */
-        .pub-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .pub-card {
+        /* 學術著作清單 IEEE Style References */
+        .pub-container {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 20px 24px;
+            padding: 32px 36px;
             box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            position: relative;
         }
 
-        .pub-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(216, 58, 111, 0.35);
+        .pub-group {
+            margin-bottom: 36px;
         }
 
-        .pub-meta-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
+        .pub-group:last-child {
+            margin-bottom: 0;
         }
 
-        .pub-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .pub-badge {
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .pub-badge-sci {
-            background: #fdf2f8;
-            color: #be185d;
-            border: 1px solid #fbcfe8;
-        }
-
-        .pub-badge-ei {
-            background: #fff1f2;
-            color: #e11d48;
-            border: 1px solid #fecdd3;
-        }
-
-        .pub-badge-conf {
-            background: #fdf4f5;
-            color: #6c4b5d;
-            border: 1px solid #fce7eb;
-        }
-
-        .pub-badge-patent {
-            background: #fff7ed;
-            color: #c2410c;
-            border: 1px solid #ffedd5;
-        }
-
-
-
-        .pub-year {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            font-family: 'Fira Code', monospace;
-        }
-
-        .pub-title {
-            font-size: 1.05rem;
+        .pub-group-title {
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--dark);
-            line-height: 1.45;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .pub-authors {
-            font-size: 0.9rem;
-            color: #475569;
+        .pub-group-title i {
+            color: var(--primary);
+            width: 20px;
+            height: 20px;
         }
 
-        .pub-authors b, .pub-authors strong {
+        .ieee-ref-list {
+            list-style: none;
+            counter-reset: ieee-counter;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .ieee-ref-list > li {
+            counter-increment: ieee-counter;
+            position: relative;
+            padding-left: 48px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            word-break: break-word;
+        }
+
+        .ieee-ref-list > li::before {
+            content: "[" counter(ieee-counter) "]";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            min-width: 38px;
+            text-align: right;
+        }
+
+        .ieee-ref-list b, .ieee-ref-list strong {
             color: var(--primary);
             font-weight: 700;
         }
 
-        .pub-venue {
-            font-size: 0.88rem;
-            color: var(--text-muted);
+        .ieee-ref-list i, .ieee-ref-list em {
             font-style: italic;
         }
 
-        .pub-links {
-            margin-top: 4px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .pub-link-btn {
-            font-size: 0.82rem;
-            font-weight: 600;
+        .ieee-ref-list a {
             color: var(--primary);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            word-break: break-all;
+            transition: var(--transition);
         }
 
-        .pub-link-btn:hover {
-            text-decoration: underline;
+        .ieee-ref-list a:hover {
+            color: var(--primary-hover);
         }
 
         /* 專利與榮譽 Cards Grid */
@@ -1260,6 +1225,19 @@
 
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .pub-container {
+                padding: 22px 18px;
+            }
+
+            .ieee-ref-list > li {
+                padding-left: 38px;
+                font-size: 0.9rem;
+            }
+
+            .ieee-ref-list > li::before {
+                min-width: 30px;
             }
 
             .footer-top, .footer-bottom {
@@ -1591,366 +1569,91 @@
 
             <!-- 分類切換按鈕 Tabs -->
             <div class="pub-filter-nav">
-                <button class="pub-tab-btn active" onclick="filterPubs('all')">全部著作 <span class="pub-tab-count">All</span></button>
-                <button class="pub-tab-btn" onclick="filterPubs('journal')">期刊論文 (Journal) <span class="pub-tab-count">16</span></button>
-                <button class="pub-tab-btn" onclick="filterPubs('conference')">研討會論文 (Conference) <span class="pub-tab-count">35</span></button>
-                <button class="pub-tab-btn" onclick="filterPubs('books')">專書與專書章節 (Books) <span class="pub-tab-count">6</span></button>
+                <button class="pub-tab-btn active" onclick="filterPubs('all', this)">全部著作 <span class="pub-tab-count">57</span></button>
+                <button class="pub-tab-btn" onclick="filterPubs('journal', this)">期刊論文 (Journal) <span class="pub-tab-count">16</span></button>
+                <button class="pub-tab-btn" onclick="filterPubs('conference', this)">研討會論文 (Conference) <span class="pub-tab-count">35</span></button>
+                <button class="pub-tab-btn" onclick="filterPubs('books', this)">專書與專書章節 (Books) <span class="pub-tab-count">6</span></button>
             </div>
 
-            <!-- 著作卡片清單 -->
-            <div class="pub-list" id="pubList">
+            <!-- 著作列表 (IEEE References Style) -->
+            <div class="pub-container" id="pubContainer">
 
-                <!-- Journal 2026 -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">ESCI</span>
-                            <span class="pub-badge pub-badge-ei">EI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2026</span>
-                    </div>
-                    <div class="pub-title">A Traffic Classification-based Traffic Engineering Framework in Software-Defined Networking</div>
-                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang</div>
-                    <div class="pub-venue">International Journal of Communication Networks and Distributed Systems, vol. 32, no. 1, pp. 33–57, 2026.</div>
-                    <div class="pub-links">
-                        <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJCNDS.2026.150916" target="_blank" class="pub-link-btn"><i data-lucide="external-link" style="width:13px;height:13px;"></i> Available Online</a>
-                    </div>
+                <!-- 期刊論文 (Journal) -->
+                <div class="pub-group" data-category="journal">
+                    <h3 class="pub-group-title"><i data-lucide="file-text"></i> 期刊論文 (Journal Articles)</h3>
+                    <ol class="ieee-ref-list">
+                        <li><b>Chih-Yu Lin</b>, Chien-Cheng Wu, and Hong-Yi Huang, "A Traffic Classification-based Traffic Engineering Framework in Software-Defined Networking," <i>International Journal of Communication Networks and Distributed Systems</i>, vol. 32, no. 1, pp. 33–57, 2026. [Online]. Available: <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJCNDS.2026.150916" target="_blank" rel="noopener">https://www.inderscienceonline.com/doi/abs/10.1504/IJCNDS.2026.150916</a> (ESCI, EI)</li>
+                        <li>Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b>, "A Distributed Beam Hopping Strategy with Load Balancing and Coordinated Interference Avoidance for Heterogeneous Satellite Systems," <i>IEEE Transactions on Aerospace and Electronic Systems</i>, PP(99):1-12, 2025. DOI: <a href="https://doi.org/10.1109/TAES.2025.3633205" target="_blank" rel="noopener">10.1109/TAES.2025.3633205</a> (SCI)</li>
+                        <li>Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh, "Fake Path Co-Construction Source Location Privacy Protection Scheme Design for UWSNs," <i>IEEE Transactions on Information Forensics and Security</i>, vol. 20, pp. 9139-9150, 2025. DOI: <a href="https://doi.org/10.1109/TIFS.2025.3597212" target="_blank" rel="noopener">10.1109/TIFS.2025.3597212</a> (SCI)</li>
+                        <li><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An, "Employing Federated Semi-Supervised Learning for Network Traffic Classification," <i>Journal of Network and Systems Management</i>, vol. 33, no. 53, pp. 1-30, May 2025. (SCI)</li>
+                        <li>Y.-Heng Hsieh, C.-M. Chao, C.-C. Yeh, and <b>C.-Y. Lin</b>, "Anti-Jamming Low-Latency Channel Hopping Protocol for Cognitive Radio Networks," <i>Electronics</i>, 12(8):1811, 2023. DOI: <a href="https://doi.org/10.3390/electronics12081811" target="_blank" rel="noopener">10.3390/electronics12081811</a> (SCI)</li>
+                        <li>Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b>, "WFID: Driver Identity Recognition Based on Wi-Fi Signals," <i>IEEE Transactions on Vehicular Technology</i>, vol. 72, no. 1, pp. 679-688, Jan. 2023. DOI: <a href="https://doi.org/10.1109/TVT.2022.3203725" target="_blank" rel="noopener">10.1109/TVT.2022.3203725</a> (SCI)</li>
+                        <li>K.-W. Chen, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh, "Anti-Jamming Channel Hopping Protocol Design Based on Channel Occupancy Probability for Cognitive Radio Networks," <i>Computer Networks</i>, vol. 214, Sep. 2022. (SCI)</li>
+                        <li>W.-C. Liang, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh, "Transmission Range Determination and Antenna Deployment to Recognize Fitness Actions Using Wi-Fi Signals," <i>International Journal of Ad Hoc and Ubiquitous Computing</i>, vol. 41, no. 4, Oct. 2022. (SCI)</li>
+                        <li><b>C.-Y. Lin</b>, C.-H. Wang, and Y.-C. Tseng, "A TDMA Protocol with Reinforcement Learning Slot Selection for MANETs," <i>International Journal of Ad Hoc and Ubiquitous Computing</i>, vol. 37, no. 1, pp. 16–25, 2021. [<a href="http://www.inderscience.com/offer.php?id=115123" target="_blank" rel="noopener">Website</a>]</li>
+                        <li><b>C.-Y. Lin</b>, Y.-C. Tseng, and Ten-Hwang Lai, "Exploiting Spatial Correlation at the Link Layer for Event-driven Sensor Networks," <i>International Journal of Sensor Networks</i>, vol. 12, no. 1, pp. 1–15, July 2012.</li>
+                        <li>W.-C. Shih, S.-S. Tseng, C.-C. Yang, <b>C.-Y. Lin</b>, and T. Liang, "A Folksonomy-based Guidance Mechanism for Context-aware Ubiquitous Learning: a Case Study of Chinese Scenic Poetry Appreciation Activities," <i>Educational Technology &amp; Society</i>, vol. 15, no. 1, pp. 90–101, 2012. (SSCI)</li>
+                        <li><b>C.-Y. Lin</b>, Y.-C. Tseng, and Yung-Chih Liu, "Imprecision-tolerant Location Management for Object-tracking Wireless Sensor Networks," <i>The Computer Journal</i>, vol. 53, no. 3, pp. 351–364, 2010. (SCIE, EI)</li>
+                        <li><b>C.-Y. Lin</b>, Y.-C. Tseng, Ten-Hwang Lai, W.-C. Peng, and H.-W. Fang, "Message-efficient In-network Location Management in a Multi-sink Wireless Sensor Network," <i>International Journal of Sensor Networks</i>, vol. 3, no. 1, pp. 3–15, 2008.</li>
+                        <li><b>C.-Y. Lin</b>, W.-C. Peng, and Y.-C. Tseng, "Efficient In-Network Moving Object Tracking in Wireless Sensor Networks," <i>IEEE Transactions on Mobile Computing</i>, vol. 5, no. 8, pp. 1044–1056, Aug. 2006. (SCI)</li>
+                        <li>S.-L. Wu, <b>C.-Y. Lin</b>, Y.-C. Tseng, and J.-P. Sheu, "A Novel MAC Protocol with On-Demand Channel Assignment for Multi-Hop Mobile Ad-Hoc Networks," <i>International Journal of Electrical Engineering</i>, vol. 11, no. 4, pp. 361–374, Nov. 2004. (EI)</li>
+                        <li>S.-L. Wu, Y.-C. Tseng, <b>C.-Y. Lin</b>, and J.-P. Sheu, "A Multi-Channel MAC Protocol with Power Control for Multi-Hop Mobile Ad Hoc Networks," <i>The Computer Journal</i>, vol. 45, no. 1, pp. 101–110, 2002. (SCIE, EI)</li>
+                    </ol>
                 </div>
 
-                <!-- Journal 2025 - TAES -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">A Distributed Beam Hopping Strategy with Load Balancing and Coordinated Interference Avoidance for Heterogeneous Satellite Systems</div>
-                    <div class="pub-authors">Yao-Tsung Li, Chih-Min Chao, Chun-Chao Yeh, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">IEEE Transactions on Aerospace and Electronic Systems, PP(99):1-12, 2025. DOI: 10.1109/TAES.2025.3633205</div>
+                <!-- 研討會論文 (Conference) -->
+                <div class="pub-group" data-category="conference">
+                    <h3 class="pub-group-title"><i data-lucide="users"></i> 研討會論文 (Conference Papers)</h3>
+                    <ol class="ieee-ref-list">
+                        <li>王威翔、許為庭、<b>林致宇</b>, "應用於車輛訊息關聯之自動標記框架：以真實世界資料為驗證," <i>無線、隨意及感測網路研討會 (WASN 2026)</i>，台灣，台中，2026年8月.</li>
+                        <li><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu, "A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation," in <i>Proc. 2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS)</i>, Tokyo, Japan, 2025, pp. 1–5. DOI: <a href="https://doi.org/10.1109/APWCS67981.2025.11151960" target="_blank" rel="noopener">10.1109/APWCS67981.2025.11151960</a></li>
+                        <li>Liyakat Ali, and <b>Chih-Yu Lin</b>, "Implementing Federated Learning via IoTtalk: A Smart Home Case Study," in <i>Proc. 2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS)</i>, Tokyo, Japan, 2025, pp. 1–5. DOI: <a href="https://doi.org/10.1109/APWCS67981.2025.11151953" target="_blank" rel="noopener">10.1109/APWCS67981.2025.11151953</a></li>
+                        <li>蔡震霖、<b>林致宇</b>, "聯邦學習架構下聚合演算法於流量分類應用中的影響," <i>第二十九屆行動計算研討會 (MC 2025)</i>，台灣，台北，2025年8月.</li>
+                        <li>廖翊均、安立郁、<b>林致宇</b>, "樣本數及取樣方法的對於網路流量分類效能的影響," <i>第二十九屆行動計算研討會 (MC 2025)</i>，台灣，台北，2025年8月.</li>
+                        <li>Wei-Rong Chen, <b>Chih-Yu Lin</b>, and Yu-Chee Tseng, "Label Expansion through Walking Trajectories for Wi-Fi CSI-Based Indoor Localization," in <i>Proc. IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)</i>, Valencia, Spain, Sep. 2024.</li>
+                        <li>劉仲恒、<b>林致宇</b>, "FedMDFNN 模型之改進及效能分析," <i>無線、隨意及感測網路研討會 (WASN 2024)</i>，台灣，台北，2024年8月.</li>
+                        <li>安立郁、<b>林致宇</b>, "資料不平衡對網路流量分類的影響," <i>第二十八屆行動計算研討會 (MC 2024)</i>，台灣，台北，2024年8月.</li>
+                        <li>Albert Budi Christian, Yi-Qi Zhong, Wan-Hsun Hu, Chia-Hsuan Yu, and <b>Chih-Yu Lin</b>, "A Simple Deep Q-Network based Feature Selection Method," in <i>Proc. IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS 2023)</i>, Tainan, Taiwan, Aug. 23-25, 2023, pp. 1–4. (presenter)</li>
+                        <li>江庭葳、曾千庭、<b>林致宇</b>, "使用 Autoencoder 和聯邦式學習進行網路流量分類," <i>第二十七屆行動計算研討會 (MC 2023)</i>，台灣，基隆，2023年8月.</li>
+                        <li>Guan-Sheng Wang, <b>Chih-Yu Lin</b>, Yu-Chee Tseng, and Lan-Da Van, "A Multilayer Perceptron Model for Station Grouping in IEEE 802.11ah Networks," in <i>Proc. IEEE/IFIP Network Operations and Management Symposium (NOMS)</i>, Miami, USA, May 2023. (presenter)</li>
+                        <li>曾千庭、<b>林致宇</b>、程匯芳、林暐傑, "使用聯邦式學習進行網路流量分類," <i>臺灣網際網路研討會 (TANET 2022)</i>，台灣，桃園，2022年12月.</li>
+                        <li>梁晉維、<b>林致宇</b>, "實現車輛周遭環境感知的自動標記法," <i>臺灣網際網路研討會 (TANET 2022)</i>，台灣，桃園，2022年12月.</li>
+                        <li>Albert Budi Christian, <b>Chih-Yu Lin</b>, Yu-Chee Tseng, Lan-Da Van, Wan-Hsun Hu, and Chia-Hsuan Yu, "Accuracy-Time Efficient Hyperparameter Optimization Using Actor-Critic-based Reinforcement Learning and Early Stopping in OpenAI Gym Environment," in <i>Proc. International Conference on Internet of Things and Intelligence System (IoTaIS)</i>, Bali, Indonesia, Nov. 2022.</li>
+                        <li>Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng, "Radar and Camera Fusion for Object Forecasting in Driving Scenarios," in <i>Proc. International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)</i>, Malaysia, Dec. 2022.</li>
+                        <li><b>林致宇</b>、黃弘毅, "軟體定義網路下基於流量類別概念的流量分類與排程方法," <i>臺灣網際網路研討會 (TANET 2021)</i>，台灣，台中，2021年12月.</li>
+                        <li>Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng, "Data Fusion Driven Lane-level Precision Data Transmission for V2X Road Applications," in <i>Proc. International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)</i>, Singapore, Dec. 2021.</li>
+                        <li>Albert Budi Christian, <b>C.-Y. Lin</b>, C.-W. Lee, L.-D. Van, and Y.-C. Tseng, "A Neural Network-based Multisensor Data Fusion Approach for Enabling Situational Awareness of Vehicles," in <i>Proc. International Conference on Pervasive Artificial Intelligence (ICPAI)</i>, Taipei, Taiwan, Dec. 2020.</li>
+                        <li>李佩俞、林獻庭、何鳳雯、林家弘、林逸豪、<b>林致宇</b>、陳志成, "使用長短期記憶神經網路演算法結合蜂巢式網路資訊的移動類型辨識器," <i>臺灣網際網路研討會 (TANET 2019)</i>，台灣，高雄，2019年9月.</li>
+                        <li>林獻庭、何鳳雯、林家弘、李佩俞、林逸豪、<b>林致宇</b>、陳志成, "SensingGO: 結合社交與獎勵活動之群眾量測平台," <i>第十五屆無線、隨意及感測網路研討會 (WASN 2019)</i>，台灣，台南，2019年8月.</li>
+                        <li>T.-K. Lee, T.-W. Wang, W.-X. Wu, Y.-C. Kuo, S.-H. Huang, G.-S. Wang, <b>C.-Y. Lin</b>, J.-J. Chen, and Y.-C. Tseng, "Building a V2X Simulation Framework for Future Autonomous Driving," in <i>Proc. The 20th Asia-Pacific Network Operations and Management Symposium (APNOMS)</i>, Matsue, Japan, Sep. 2019.</li>
+                        <li>Y.-H. Lin, J.-C. Chen, <b>C.-Y. Lin</b>, B.-Y. Su, and P.-Y. Lee, "Transportation Type Identification by using Machine Learning Algorithms with Cellular Information," in <i>Proc. IEEE International Conference on Communications (ICC '19)</i>, Shanghai, China, May 2019.</li>
+                        <li>T.-K. Lee, Y.-C. Kuo, S.-H. Huang, G.-S. Wang, <b>C.-Y. Lin</b>, and Y.-C. Tseng, "Augmenting Car Surrounding Information by Inter-Vehicle Data Fusion," in <i>Proc. IEEE Wireless Communications and Networking Conference (WCNC)</i>, Marrakech, Morocco, April 2019.</li>
+                        <li>Y.-H. Lin, J.-C. Chen, <b>C.-Y. Lin</b>, B.-Y. Su, and P.-Y. Lee, "Poster: SensingGO: toward mobile/cellular data measurement with social and rewarding activities," in <i>Proc. ACM International Conference on Mobile Computing and Networking (MobiCom '18)</i>, New Delhi, India, pp. 765–767, Oct. 2018.</li>
+                        <li>譚宇均、林元偉、<b>林致宇</b>、陳志成, "適地性社群媒體的設計與實作," <i>第二十一屆行動計算研討會 (MC 2016)</i>，台灣，南投，2016年8月.</li>
+                        <li>C.-C. Wu, L.-P. Tung, <b>C.-Y. Lin</b>, B.-S. Lin, and Y.-C. Tseng, "On Local Cache Management Strategies for Mobile Augmented Reality," in <i>Proc. IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM)</i>, Sydney, Australia, June 2014.</li>
+                        <li><b>C.-Y. Lin</b>, S.-H. Lu, and Y.-C. Tseng, "A Channel Management Protocol for Multi-Channel, Single-Radio 802.11-based Wireless Mesh Networks," in <i>Proc. IEEE International Workshop on Computer Aided Modeling Analysis and Design of Communication Links and Networks (CAMAD)</i>, Kyoto, Japan, June 2011.</li>
+                        <li><b>林致宇</b>、時文中, "位置感知旅遊翻譯機之設計與實作," <i>第六屆台灣數位學習發展研討會 (TWELF 2010)</i>，台灣，台中，2010年10月.</li>
+                        <li><b>C.-Y. Lin</b>, "A Quadtree-based Location Management Scheme for Wireless Sensor Networks," in <i>Proc. IEEE/IFIP Network Operations and Management Symposium (NOMS)</i>, Osaka, Japan, April 2010.</li>
+                        <li><b>C.-Y. Lin</b>, Y.-C. Tseng, H.-W. Fang, Y.-F. Kao, Y.-F. Lee, and C.-C. Shen, "Vague Location Tracking in Wireless Sensor Networks," in <i>Proc. Asia-Pacific Wireless Communications Symposium (APWCS)</i>, Sendai, Japan, Aug. 2008.</li>
+                        <li><b>C.-Y. Lin</b>, Y.-C. Tseng, and T.-H. Lai, "Message-Efficient In-Network Location Management in a Multi-sink Wireless Sensor Network," in <i>Proc. IEEE International Conference on Sensor Networks, Ubiquitous, and Trustworthy Computing (SUTC)</i>, Taichung, Taiwan, June 2006.</li>
+                        <li><b>C.-Y. Lin</b> and Y.-C. Tseng, "Structures for In-Network Moving Object Tracking in Wireless Sensor Networks," in <i>Proc. Broadband Wireless Networking Symposium (BroadNet)</i>, San Jose, California, USA, Oct. 2004.</li>
+                        <li>Y.-C. Tseng, S.-L. Wu, <b>C.-Y. Lin</b>, and J.-P. Sheu, "A Multi-Channel MAC Protocol with Power Control for Multi-Hop Mobile Ad Hoc Networks," in <i>Proc. International Workshop on Wireless Networks and Mobile Computing (in conjunction with ICDCS 2001)</i>, Phoenix, Arizona, USA, April 2001, pp. 419–424.</li>
+                        <li>S.-L. Wu, <b>C.-Y. Lin</b>, Y.-C. Tseng, and J.-P. Sheu, "A New Multi-Channel MAC Protocol with On-Demand Channel Assignment for Mobile Ad Hoc Networks," in <i>Proc. International Symposium on Parallel Architectures, Algorithms and Networks (I-SPAN)</i>, Dallas, Texas, USA, Dec. 2000, pp. 232–237.</li>
+                        <li>S.-L. Wu, <b>C.-Y. Lin</b>, C.-J. Huang, Y.-C. Tseng, and J.-P. Sheu, "W4: A WWW Proxy Server for Wireless Networks," in <i>Proc. Cross-Straight Information Technology</i>, Chung-Li, Taiwan, 1999.</li>
+                    </ol>
                 </div>
 
-                <!-- Journal 2025 - TIFS -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">Fake Path Co-Construction Source Location Privacy Protection Scheme Design for UWSNs</div>
-                    <div class="pub-authors">Ming-Hao Wei, Chih-Min Chao, <b>Chih-Yu Lin</b>, and Chun-Chao Yeh</div>
-                    <div class="pub-venue">IEEE Transactions on Information Forensics and Security, vol. 20, pp. 9139-9150, 2025. DOI: 10.1109/TIFS.2025.3597212</div>
-                </div>
-
-                <!-- Journal 2025 - JNSM -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">Employing Federated Semi-Supervised Learning for Network Traffic Classification</div>
-                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Chien-Ting Tseng, and Li-Yu An</div>
-                    <div class="pub-venue">Journal of Network and Systems Management, vol. 33, no. 53, pp. 1-30, May 2025.</div>
-                </div>
-
-                <!-- Journal 2023 - Electronics -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2023</span>
-                    </div>
-                    <div class="pub-title">Anti-Jamming Low-Latency Channel Hopping Protocol for Cognitive Radio Networks</div>
-                    <div class="pub-authors">Y.-Heng Hsieh, C.-M. Chao, C.-C. Yeh, and <b>C.-Y. Lin</b></div>
-                    <div class="pub-venue">Electronics, 12(8):1811, 2023. DOI: 10.3390/electronics12081811</div>
-                </div>
-
-                <!-- Journal 2023 - IEEE TVT -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2023</span>
-                    </div>
-                    <div class="pub-title">WFID: Driver Identity Recognition Based on Wi-Fi Signals</div>
-                    <div class="pub-authors">Y. -J. Yang, C. -M. Chao, C. -C. Yeh and <b>C. -Y. Lin</b></div>
-                    <div class="pub-venue">IEEE Transactions on Vehicular Technology, vol. 72, no. 1, pp. 679-688, Jan. 2023. DOI: 10.1109/TVT.2022.3203725</div>
-                </div>
-
-                <!-- Journal 2022 - Computer Networks -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2022</span>
-                    </div>
-                    <div class="pub-title">Anti-Jamming Channel Hopping Protocol Design Based on Channel Occupancy Probability for Cognitive Radio Networks</div>
-                    <div class="pub-authors">K.-W. Chen, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh</div>
-                    <div class="pub-venue">Computer Networks, Vol. 214, Sep. 2022.</div>
-                </div>
-
-                <!-- Journal 2022 - IJAHUC -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2022</span>
-                    </div>
-                    <div class="pub-title">Transmission Range Determination and Antenna Deployment to Recognize Fitness Actions Using Wi-Fi Signals</div>
-                    <div class="pub-authors">W.-C. Liang, C.-M. Chao, <b>C.-Y. Lin</b>, and C.-C. Yeh</div>
-                    <div class="pub-venue">International Journal of Ad Hoc and Ubiquitous Computing, Vol. 41, Issue 4, Oct. 2022.</div>
-                </div>
-
-                <!-- Journal 2021 - IJAHUC -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2021</span>
-                    </div>
-                    <div class="pub-title">A TDMA Protocol with Reinforcement Learning Slot Selection for MANETs</div>
-                    <div class="pub-authors"><b>C.-Y. Lin</b>, C.-H. Wang, and Y.-C. Tseng</div>
-                    <div class="pub-venue">International Journal of Ad Hoc and Ubiquitous Computing, 2021 Vol.37 No.1, pp.16 - 25.</div>
-                </div>
-
-                <!-- Journal Classic Selected -->
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCIE</span>
-                            <span class="pub-badge pub-badge-ei">EI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2010</span>
-                    </div>
-                    <div class="pub-title">Imprecision-tolerant Location Management for Object-tracking Wireless Sensor Networks</div>
-                    <div class="pub-authors"><b>C.-Y. Lin</b>, Y.-C. Tseng, and Yung-Chih Liu</div>
-                    <div class="pub-venue">The Computer Journal, Vol. 53, No. 3, 2010, pp. 351-364.</div>
-                </div>
-
-                <div class="pub-card" data-category="journal">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-sci">SCI</span>
-                            <span class="pub-badge pub-badge-conf">Journal</span>
-                        </div>
-                        <span class="pub-year">2006</span>
-                    </div>
-                    <div class="pub-title">Efficient In-Network Moving Object Tracking in Wireless Sensor Networks</div>
-                    <div class="pub-authors"><b>C.-Y. Lin</b>, W.-C. Peng, and Y.-C. Tseng</div>
-                    <div class="pub-venue">IEEE Transactions on Mobile Computing, Vol. 5, No. 8, Aug. 2006, pp. 1044-1056.</div>
-                </div>
-
-                <!-- Conference 2026 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2026</span>
-                    </div>
-                    <div class="pub-title">應用於車輛訊息關聯之自動標記框架：以真實世界資料為驗證</div>
-                    <div class="pub-authors">王威翔、許為庭、<b>林致宇</b></div>
-                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2026)，台灣，台中，2026年8月.</div>
-                </div>
-
-                <!-- Conference 2025 APWCS Pedestrian -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">A Pedestrian Location Estimation Method Based on Multi-Sensor Cooperation</div>
-                    <div class="pub-authors"><b>Chih-Yu Lin</b>, Ting-Wei Jiang, and Wan-Yun Wu</div>
-                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025, pp. 1-5. DOI: 10.1109/APWCS67981.2025.11151960</div>
-                </div>
-
-                <!-- Conference 2025 APWCS IoTtalk -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">Implementing Federated Learning via IoTtalk: A Smart Home Case Study</div>
-                    <div class="pub-authors">Liyakat Ali, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS), Tokyo, Japan, 2025, pp. 1-5. DOI: 10.1109/APWCS67981.2025.11151953</div>
-                </div>
-
-                <!-- Conference 2025 MC -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">聯邦學習架構下聚合演算法於流量分類應用中的影響</div>
-                    <div class="pub-authors">蔡震霖、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
-                </div>
-
-                <!-- Conference 2025 MC 2 -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">樣本數及取樣方法的對於網路流量分類效能的影響</div>
-                    <div class="pub-authors">廖翊均、安立郁、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十九屆行動計算研討會 (MC 2025)，台灣，台北，2025年8月.</div>
-                </div>
-
-                <!-- Conference 2024 PIMRC -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2024</span>
-                    </div>
-                    <div class="pub-title">Label Expansion through Walking Trajectories for Wi-Fi CSI-Based Indoor Localization</div>
-                    <div class="pub-authors">Wei-Rong Chen, <b>Chih-Yu Lin</b>, and Yu-Chee Tseng</div>
-                    <div class="pub-venue">IEEE International Symposium on Personal, Indoor and Mobile Radio Communication (PIMRC), Valencia, Spain, Sep. 2024.</div>
-                </div>
-
-                <!-- Conference 2024 WASN -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2024</span>
-                    </div>
-                    <div class="pub-title">FedMDFNN 模型之改進及效能分析</div>
-                    <div class="pub-authors">劉仲恒、<b>林致宇</b></div>
-                    <div class="pub-venue">無線、隨意及感測網路研討會 (WASN 2024)，台灣，台北，2024年8月.</div>
-                </div>
-
-                <!-- Conference 2024 MC -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2024</span>
-                    </div>
-                    <div class="pub-title">資料不平衡對網路流量分類的影響</div>
-                    <div class="pub-authors">安立郁、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十八屆行動計算研討會 (MC 2024)，台灣，台北，2024年8月.</div>
-                </div>
-
-                <!-- Conference 2023 APWCS -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2023</span>
-                    </div>
-                    <div class="pub-title">A Simple Deep Q-Network based Feature Selection Method</div>
-                    <div class="pub-authors">Albert Budi Christian, Yi-Qi Zhong, Wan-Hsun Hu, Chia-Hsuan Yu, and <b>Chih-Yu Lin</b></div>
-                    <div class="pub-venue">IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS 2023), Tainan, Taiwan, Aug. 2023.</div>
-                </div>
-
-                <!-- Conference 2023 MC -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2023</span>
-                    </div>
-                    <div class="pub-title">使用 Autoencoder 和聯邦式學習進行網路流量分類</div>
-                    <div class="pub-authors">江庭葳、曾千庭、<b>林致宇</b></div>
-                    <div class="pub-venue">第二十七屆行動計算研討會 (MC 2023)，台灣，基隆，2023年8月.</div>
-                </div>
-
-                <!-- Conference 2022 MCSoC -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2022</span>
-                    </div>
-                    <div class="pub-title">Radar and Camera Fusion for Object Forecasting in Driving Scenarios</div>
-                    <div class="pub-authors">Albert Budi Christian, Yu-Hsuan Wu, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
-                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Malaysia, Dec. 2022.</div>
-                </div>
-
-                <!-- Conference 2021 MCSoC -->
-                <div class="pub-card" data-category="conference">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-conf">Conference</span>
-                        </div>
-                        <span class="pub-year">2021</span>
-                    </div>
-                    <div class="pub-title">Data Fusion Driven Lane-level Precision Data Transmission for V2X Road Applications</div>
-                    <div class="pub-authors">Albert Budi Christian, <b>Chih-Yu Lin</b>, Lan-Da Van, and Yu-Chee Tseng</div>
-                    <div class="pub-venue">International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC), Singapore, Dec. 2021.</div>
-                </div>
-
-                <!-- Books -->
-                <div class="pub-card" data-category="books">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-ei">Book</span>
-                        </div>
-                        <span class="pub-year">2015</span>
-                    </div>
-                    <div class="pub-title">Android 程式設計入門與應用 (第二版)</div>
-                    <div class="pub-authors"><b>林致宇</b> 著</div>
-                    <div class="pub-venue">全華出版, ISBN: 978-957-21-9833-9</div>
-                    <div class="pub-links">
-                        <a href="http://www.books.com.tw/products/0010678395" target="_blank" class="pub-link-btn"><i data-lucide="external-link" style="width:13px;height:13px;"></i> 博客來書籍資訊</a>
-                    </div>
-                </div>
-
-                <div class="pub-card" data-category="books">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-ei">Book</span>
-                        </div>
-                        <span class="pub-year">2011</span>
-                    </div>
-                    <div class="pub-title">無線網路：通訊協定、感測網路、射頻技術與應用服務</div>
-                    <div class="pub-authors">曾煜棋、林政寬、<b>林致宇</b>、潘孟鉉</div>
-                    <div class="pub-venue">碁峰出版, ISBN: 9789862763094</div>
-                </div>
-
-                <div class="pub-card" data-category="books">
-                    <div class="pub-meta-row">
-                        <div class="pub-badges">
-                            <span class="pub-badge pub-badge-ei">Book Chapter</span>
-                        </div>
-                        <span class="pub-year">2007</span>
-                    </div>
-                    <div class="pub-title">Wireless Mesh Networks: Design Principles & Multi-Channel Protocols</div>
-                    <div class="pub-authors">W.-H. Tam, <b>C.-Y. Lin</b>, and Y.-C. Tseng</div>
-                    <div class="pub-venue">Wireless Ad Hoc Networking: Personal-Area, Local-Area, and Sensory-Area Networks, Auerbach Publications, 2007. (ISBN: 978-0849392542)</div>
+                <!-- 專書與專書章節 (Books) -->
+                <div class="pub-group" data-category="books">
+                    <h3 class="pub-group-title"><i data-lucide="book-open"></i> 專書與專書章節 (Books & Book Chapters)</h3>
+                    <ol class="ieee-ref-list">
+                        <li><b>林致宇</b>, <i>Android 程式設計入門與應用 (第二版)</i>, 全華出版, 2015. (ISBN: 978-957-21-9833-9) [<a href="http://www.books.com.tw/products/0010678395" target="_blank" rel="noopener">博客來書籍資訊</a>]</li>
+                        <li><b>林致宇</b>, <i>Android 程式設計入門與應用</i>, 全華出版, 2014. (ISBN: 978-957-21-9412-6) [<a href="http://www.chwa.com.tw/NEWun/bookinfo.asp?b_no=06251007" target="_blank" rel="noopener">書籍資訊</a>]</li>
+                        <li>曾煜棋、林政寬、<b>林致宇</b>、潘孟鉉, <i>無線網路：通訊協定、感測網路、射頻技術與應用服務</i>, 碁峰出版, 2011. (ISBN: 9789862763094)</li>
+                        <li>曾煜棋、潘孟鉉、<b>林致宇</b>, <i>無線區域及個人網路-隨意及感測網路之技術與應用</i>, 知城出版, 2007. (ISBN: 9868293316)</li>
+                        <li>W.-H. Tam, <b>C.-Y. Lin</b>, and Y.-C. Tseng, "Wireless Mesh Networks: Design Principles," in <i>Wireless Ad Hoc Networking: Personal-Area, Local-Area, and Sensory-Area Networks</i>, S.-L. Wu and Y.-C. Tseng, Eds., Auerbach Publications, 2007. (ISBN: 978-0849392542)</li>
+                        <li><b>C.-Y. Lin</b>, W.-H. Tam, and Y.-C. Tseng, "Wireless Mesh Networks: Multi-Channel Protocols and Standard Activities," in <i>Wireless Ad Hoc Networking: Personal-Area, Local-Area, and Sensory-Area Networks</i>, S.-L. Wu and Y.-C. Tseng, Eds., Auerbach Publications, 2007. (ISBN: 978-0849392542)</li>
+                    </ol>
                 </div>
 
             </div>
@@ -2131,19 +1834,23 @@
         }
 
         // 著作分類過濾功能
-        function filterPubs(category) {
+        function filterPubs(category, clickedBtn) {
             // 更新按鈕狀態
             const buttons = document.querySelectorAll('.pub-tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            } else if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
 
-            // 過濾卡片
-            const cards = document.querySelectorAll('#pubList .pub-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
+            // 過濾群組
+            const groups = document.querySelectorAll('.pub-group');
+            groups.forEach(group => {
+                if (category === 'all' || group.getAttribute('data-category') === category) {
+                    group.style.display = 'block';
                 } else {
-                    card.style.display = 'none';
+                    group.style.display = 'none';
                 }
             });
         }
